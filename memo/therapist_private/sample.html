@@ -92,6 +92,8 @@ ul{padding:0;list-style:none}
 .video__vol input::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:#fff;cursor:pointer}
 .video__bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)}
 .video__bar-in{height:100%;width:0;background:#fff}
+.video__mute,.video__pp,.video__vol{transition:opacity .6s ease}
+.video__wrap:not(.is-ui) .video__mute,.video__wrap:not(.is-ui) .video__pp,.video__wrap:not(.is-ui) .video__vol{opacity:0;pointer-events:none}
 .tp .video{margin:24px -16px 0}
 .tp .video__cap{text-align:center}
 .video__box{display:block;max-width:660px;margin:0 auto;aspect-ratio:16/9;background:#1b1611;position:relative;overflow:hidden;color:#fff}
@@ -141,7 +143,7 @@ ul{padding:0;list-style:none}
 .tcards--n1{grid-template-columns:minmax(0,1fr);max-width:360px}
 .tcard{text-align:center}
 /* 札の行を横並び同士で揃える（キャッチが2行でも隣とスペック・SNSの高さがずれない）。子要素7つ＝名前/年齢/写真/キャッチ/スペック/SNS/SNS見出し */
-.tcard{display:grid;grid-template-rows:subgrid;grid-row:span 7;align-items:start;row-gap:0}  /* row-gap:0＝親の行間34pxを札の中に持ち込まない */
+.tcard{display:grid;grid-template-rows:subgrid;grid-row:span 7;align-items:start;row-gap:0}  /* row-gap:0＝親の行間34pxを札の中に持ち込まない。行＝名前・年齢・写真・キャッチ・スペック・SNS・SNSの見出し */
 .tcard__catch{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.5em * 2);line-height:1.5;margin:8px 0 6px}
 .tcard .spec{margin:0}
 .tcard .sns{gap:4px;margin-top:8px;flex-wrap:nowrap}
@@ -164,6 +166,12 @@ ul{padding:0;list-style:none}
 .badge--trainee{background:var(--trainee)}
 .badge--owner{background:var(--owner)}
 .tcard__catch{font-size:14px;margin:12px 0 8px;letter-spacing:.04em;min-height:1.6em}
+/* キャッチは1行に収める（2026-10-15 taiki）＝カードの幅÷文字数（--n）で大きさを決める。14pxより大きくはしない */
+/* ※札（.tcard）に container-type を付けると行そろえ（subgrid）が壊れて札が重なる（2026-10-15 実測）→ キャッチの p を入れ物にして、中の span の大きさを決める */
+.tcard__catch{display:block;-webkit-line-clamp:unset;white-space:nowrap;overflow:hidden;min-height:0;letter-spacing:0;container-type:inline-size}
+.tcard__catch span{font-size:min(14px,calc(100cqi / var(--n,12) * .96))}
+/* 写真の下の出勤の帯（TOP CLASS の一覧と同じ「本日 10:30 - 34:00」「次回 10月13日 予定」） */
+.tcard__shift{position:absolute;left:0;right:0;bottom:0;z-index:2;margin:0;padding:6px 4px;background:rgba(20,18,22,.78);color:#fff;font-size:12px;letter-spacing:.04em;text-align:center}
 .spec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 8px;font-family:Arial,sans-serif;font-size:13px}
 .spec div{display:flex;align-items:center;border-bottom:1px solid #444}
 .spec dt{background:#BDB4AC;color:#ddd;font-size:11px;width:22px;height:22px;display:grid;place-items:center;margin-right:8px;font-weight:700}
@@ -268,13 +276,21 @@ ul{padding:0;list-style:none}
 .gal__ths{max-width:420px;margin:10px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .gal__th{aspect-ratio:3/4;overflow:hidden;display:block;border:2px solid transparent}
 .gal__th:first-child{border-color:#fff}
-.tp__catch{font-size:18px;margin-top:22px;letter-spacing:.06em}
-.tp__spec{font-family:Arial,sans-serif;font-size:14px;margin-top:6px}
+.tp__catch{font-size:18px;margin-top:14px;letter-spacing:.06em}   /* 2026-10-15 taiki「そのあたりの隙間をもう少し少なく」22→14 */
+.tp__spec{font-family:Arial,sans-serif;font-size:14px;margin-top:4px}
 .tp__honshimei{font-size:13px;margin-top:6px;color:#ddd}
-.tags{max-width:420px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tags{max-width:420px;margin:12px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
 .tags li{background:#BDB4AC;color:#fff;font-size:11px;padding:8px 4px;border-radius:2px}
-.tp .sns{margin-top:22px}
+.tp .sns{margin-top:12px}
 .tp__std{margin-top:18px}
+/* 性病検査は出勤情報の下へ・主張しない文字だけのリンクに（2026-10-15 taiki「もう少しスタイリッシュなボタンであまり主張しないデザイン」） */
+.tp__std2{margin-top:18px;text-align:center}
+.tp__std2 a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 6px;font-size:12px;letter-spacing:.08em;opacity:.72;border-bottom:1px solid currentColor;line-height:1.2}
+.tp__std2 a span{font-size:15px}
+/* 料金表の開け閉め：▼（開くと▲） */
+.pr__arw{font-size:11px;line-height:1;transition:transform .2s;opacity:.8}
+.pr[open] .pr__arw{transform:rotate(180deg)}
+.pr--fold summary .pr__course{margin-left:auto}
 .btn-std{display:inline-flex;align-items:center;gap:8px;border:1px solid #fff;padding:10px 18px;font-size:13px;min-height:44px}
 .btn-std svg{width:18px;height:18px}
 .tp__video{display:block;position:relative;max-width:420px;margin:24px auto 0;aspect-ratio:16/9;overflow:hidden;background:#000}
@@ -372,7 +388,7 @@ body:has(.rsv__bar){padding-bottom:84px}
   .btn-line{display:inline-block;border:1px solid #fff;padding:9px 34px;font-weight:700;font-size:15px}
   .hd__tel{display:flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:20px;font-weight:700;margin-left:auto}
   .hd__tel svg{width:22px;height:22px}
-  .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5}
+  .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5;margin-left:auto}   /* 電話番号を外した（2026-10-15）ので右寄せはここで */
   .hd__hours b{font-size:15px}
   .burger,.menu,.hd__book{display:none}
   .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:4/1}   /* 2026-10-15 taiki「たての幅が長すぎる」3/1→4/1 */
@@ -761,7 +777,6 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
       <a class="btn-line" href="../reserve.html">LINE予約</a>
       <a class="btn-line" href="../reserve.html#form">WEB予約</a>
     </div>
-    <div class="hd__tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="currentColor"/></svg><span>050-0000-0000</span></div>
     <div class="hd__hours"><span>営業時間 <b>24時間営業</b></span><span>当日受付 10:00 - 翌04:00</span></div>
     <a class="hd__book" href="../booking.html">ご予約はこちら</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
@@ -772,57 +787,83 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 
 <main><div class="sec sec--light" style="padding-bottom:8px"><p class="pvt">このページは見本です。<b>非公開セラピストのページ</b>は、一覧・検索・ランキングには出さず、URLを知っている方だけが見られるページです（出勤再開前のご案内や、常連のお客様向けに使います）。</p></div>
 <section class="tp sec--dark">
-  <p class="tp__crumb"><a href="../top.html">トップページ</a> &gt; <a href="../top.html#therapist">在籍セラピスト</a> &gt; 律</p>
-  <p class="tp__cls badge badge--new">NEW FACE<br><small>-新人クラス-</small></p>
-  <h1 class="tp__name">律</h1>
-  <p class="tp__romaji">~ Ritsu ~</p>
-  <div class="gal"><div class="gal__main" id="p0"><img class="ph" src="../img/staff_ritsu_01.jpg" alt="律 写真1" loading="lazy"></div><div class="gal__main" id="p1"><img class="ph" src="../img/staff_ritsu_02.jpg" alt="律 写真2" loading="lazy"></div><div class="gal__main" id="p2"><img class="ph" src="../img/staff_ritsu_03.jpg" alt="律 写真3" loading="lazy"></div></div>
-  <div class="gal__ths"><a class="gal__th" href="#p0"><img class="ph" src="../img/staff_ritsu_01.jpg" alt="律 写真1" loading="lazy"></a><a class="gal__th" href="#p1"><img class="ph" src="../img/staff_ritsu_02.jpg" alt="律 写真2" loading="lazy"></a><a class="gal__th" href="#p2"><img class="ph" src="../img/staff_ritsu_03.jpg" alt="律 写真3" loading="lazy"></a></div>
-  <p class="tp__catch">《 はじめまして、律です 》</p>
-  <p class="tp__spec">Age 24歳 173cm 60kg INFP</p>
-  <p class="tp__honshimei">指名料 <b>無料</b></p>
-  <ul class="tags"><li>新人</li><li>元アパレル</li><li>優しい</li><li>犬好き</li><li>聞き上手</li><li>研修修了</li></ul>
-  <div class="sns"><a href="../reserve.html" aria-label="LINE"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></a></div><p class="sns__cap">– SNS LINK –</p>
-  <p class="tp__std"><a class="btn-std" href="../therapist/ritsu_std.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 12h8M9 16h8" stroke="currentColor" stroke-width="2"/></svg> 性病検査結果（準備中）</a></p>
+  <p class="tp__crumb"><a href="../top.html">トップページ</a> &gt; <a href="../top.html#therapist">在籍セラピスト</a> &gt; 姫神リョウ</p>
+  <p class="tp__cls badge badge--legend">LEGEND CLASS<br><small>-レジェンドクラス-</small></p>
+  <h1 class="tp__name">姫神リョウ</h1>
+  <p class="tp__romaji">~ Ryo Himegami ~</p>
+  <div class="gal"><div class="gal__main" id="p0"><img class="ph" src="../img/ryo_01.jpg" alt="姫神リョウ 写真1" loading="lazy"></div><div class="gal__main" id="p1"><img class="ph" src="../img/ryo_02.jpg" alt="姫神リョウ 写真2" loading="lazy"></div><div class="gal__main" id="p2"><img class="ph" src="../img/ryo_03.jpg" alt="姫神リョウ 写真3" loading="lazy"></div><div class="gal__main" id="p3"><img class="ph" src="../img/ryo_04.jpg" alt="姫神リョウ 写真4" loading="lazy"></div></div>
+  <div class="gal__ths"><a class="gal__th" href="#p0"><img class="ph" src="../img/ryo_01.jpg" alt="姫神リョウ 写真1" loading="lazy"></a><a class="gal__th" href="#p1"><img class="ph" src="../img/ryo_02.jpg" alt="姫神リョウ 写真2" loading="lazy"></a><a class="gal__th" href="#p2"><img class="ph" src="../img/ryo_03.jpg" alt="姫神リョウ 写真3" loading="lazy"></a><a class="gal__th" href="#p3"><img class="ph" src="../img/ryo_04.jpg" alt="姫神リョウ 写真4" loading="lazy"></a></div>
+  <p class="tp__catch">《 デートコースを広めた人 》</p>
+  <p class="tp__spec">Age -Secret-</p>
+  <ul class="tags"><li>業界歴5年</li><li>元ホスト</li><li>広島デビュー</li><li>デートコースを広めた人</li><li>セラミー ランキング1位</li><li>元Xフォロワー2万人</li><li>著書あり</li><li>TikTok 3,000人</li><li>教育・採用担当</li></ul>
+  <div class="sns"><a href="../reserve.html" aria-label="LINE"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></a><a href="https://www.tiktok.com/@himegami_ryo" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-label="TikTok"><path d="M14 3h3c.3 2.2 1.7 3.6 4 3.9v3c-1.5 0-2.9-.5-4-1.3V15a5.5 5.5 0 1 1-5.5-5.5h.5v3h-.5a2.5 2.5 0 1 0 2.5 2.5V3z" fill="currentColor"/></svg></a><a href="https://www.instagram.com/himegamiryo" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-label="Instagram"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg></a><a href="https://www.youtube.com/@himegami-ch" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-label="YouTube"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9l5 3-5 3z" fill="#000"/></svg></a><a href="https://himegamistyle.com" aria-label="Webサイト" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-label="Webサイト"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></div><p class="sns__cap">– SNS LINK –</p>
   
+<section class="video" id="service">
+  <div class="video__wrap">
+    <video class="video__el" id="hero-video" autoplay muted loop playsinline preload="metadata" poster="../../video/hero_poster.jpg" aria-label="夜の世界のリアルを赤裸々告白">
+      <source src="../../video/hero.mp4" type="video/mp4">
+    </video>
+    <button class="video__mute" id="hero-mute" type="button" aria-pressed="false" aria-label="音声をオンにする"><span class="video__mute-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="video__mute-t">音声を出す</span></button>
+    <button class="video__pp" id="hero-pp" type="button" aria-label="一時停止"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" fill="currentColor"/><rect x="14" y="5" width="4" height="14" fill="currentColor"/></svg></button>
+    <label class="video__vol" for="hero-vol"><span class="video__vol-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><input id="hero-vol" type="range" min="0" max="100" value="100" step="1" aria-label="音量"></label>
+    <div class="video__bar"><div class="video__bar-in" id="hero-bar"></div></div>
+  </div>
+</section>
+<script>
+(function(){var v=document.getElementById('hero-video'),m=document.getElementById('hero-mute'),p=document.getElementById('hero-pp'),b=document.getElementById('hero-bar');if(!v)return;
+var IC_ON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',IC_OFF='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',IC_PL='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>',IC_PA='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" fill="currentColor"/><rect x="14" y="5" width="4" height="14" fill="currentColor"/></svg>';
+function paint(){var on=!v.muted;m.setAttribute('aria-pressed',on?'true':'false');m.setAttribute('aria-label',on?'音声を消す':'音声をオンにする');m.querySelector('.video__mute-ic').innerHTML=on?IC_ON:IC_OFF;m.querySelector('.video__mute-t').textContent=on?'音声を消す':'音声を出す';p.innerHTML=v.paused?IC_PL:IC_PA;p.setAttribute('aria-label',v.paused?'再生':'一時停止')}
+m.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted&&v.paused){v.play()}paint()});
+var vol=document.getElementById('hero-vol');if(vol){vol.addEventListener('input',function(){v.volume=vol.value/100;if(vol.value>0&&v.muted){v.muted=false}if(vol.value==0){v.muted=true}paint()});v.addEventListener('volumechange',function(){vol.value=v.muted?0:Math.round(v.volume*100)})}
+p.addEventListener('click',function(){if(v.paused){v.play()}else{v.pause()}paint()});
+v.addEventListener('play',paint);v.addEventListener('pause',paint);v.addEventListener('volumechange',paint);
+v.addEventListener('timeupdate',function(){if(v.duration){b.style.width=(v.currentTime/v.duration*100)+'%'}});
+document.addEventListener('visibilitychange',function(){if(document.hidden){v.muted=true;paint()}});
+/* 操作ボタンはふだん隠し、タップ（PCはマウスを動かす）で出して、2.5秒さわらなければ薄くなって消える（2026-10-15 taiki） */
+var w=v.parentNode,hideT=null;function ui(){w.classList.add('is-ui');clearTimeout(hideT);hideT=setTimeout(function(){w.classList.remove('is-ui')},2500)}
+w.addEventListener('click',ui,true);w.addEventListener('mousemove',ui);w.addEventListener('touchstart',ui,{passive:true});
+paint();})();
+</script>
+
   <div class="prs">
-        <details class="pr" open>
-          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">性感コース<small>– 料金表 –</small></span></summary>
-          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">10,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">12,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">14,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">16,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">2,000円</span></div>
+        <details class="pr pr--fold">
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course">性感コース<small>– 料金表 –</small></span><span class="pr__arw" aria-hidden="true">▼</span></summary>
+          <div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">50,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">60,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">70,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">10,000円</span></div>
         </details>
-        <details class="pr" open>
-          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">デートコース<small>– 料金表 –</small></span></summary>
-          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">8,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">2,000円</span></div>
+        <details class="pr pr--fold">
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course">デートコース<small>– 料金表 –</small></span><span class="pr__arw" aria-hidden="true">▼</span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">40,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">15,000円</span></div>
         </details>
-        <details class="pr" open>
-          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">お泊まりコース<small>– 料金表 –</small></span></summary>
-          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">30,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">3,000円</span></div>
+        <details class="pr pr--fold">
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course">お泊まりコース<small>– 料金表 –</small></span><span class="pr__arw" aria-hidden="true">▼</span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">150,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">15,000円</span></div>
         </details>
-        <details class="pr" open>
-          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">貸切コース<small>– 料金表 –</small></span></summary>
-          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">36,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">28,000円</span></div>
+        <details class="pr pr--fold">
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course">貸切コース<small>– 料金表 –</small></span><span class="pr__arw" aria-hidden="true">▼</span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">180,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">150,000円</span></div>
         </details></div>
-  <p class="tp__reserve"><label class="btn-reserve" for="rsv-open">律 を予約する</label></p>
+  <p class="tp__reserve"><label class="btn-reserve" for="rsv-open">姫神リョウ を予約する</label></p>
 </section>
 
 <section class="sec sec--light">
   <div class="sec__head"><h2 class="sec__en">Cast Profile</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">キャストプロフィール</p></div>
   <div class="prof">
-    <p class="ach">【2026年 入店の新人】</p>
-    <div class="prof__msg"><p>律（りつ）です。</p><p>入ったばかりで、まだ慣れていないところもあります。その分、時間には余裕をもって、急がせないようにしています。</p><p>初めて同士、ゆっくり進めましょう。</p></div>
-    <p class="prof__sign">律</p>
-    <p class="prof__note">※架空のサンプルスタッフです。写真はAI生成、文章もサンプル。実在の人物とは関係ありません。</p>
+    <p class="ach">【Xフォロワー2万人で業界1位（凍結前）】</p><p class="ach">【マッチングサイト セラミー ランキング1位】</p><p class="ach">【Xなどの発信で「デートコース」を業界に広めた】</p><p class="ach">【著書『はじめての女風、どう選ぶ？』（2026年8月・Sanctuary Japan）】</p>
+    <div class="prof__msg"><p>プロフィールをご覧いただきありがとうございます。姫神リョウです。</p><p>この業界に入って5年になります。広島でデビューして、いまは東京で活動しています。</p><p>Xで「デートコース」のことを発信してきたのが私です。施術の時間だけじゃなく、ご飯を食べたり歩いたりする時間も含めて一緒に過ごしたい。そう思って続けてきました。</p><p>稼ぐことより、また会いたいと言ってもらえるほうが嬉しいです。</p><p>初めての方は不安も多いと思います。著書『はじめての女風、どう選ぶ？』に、選び方と心構えをまとめました。よければ先に読んでみてください。</p><p>お会いできる日を楽しみにしています。</p></div>
+    <p class="prof__sign">姫神リョウ</p>
+    <p class="prof__note">※本文は社内ヒアリング（2026-07-25・08-03・09-08）と公開情報から起こした仮文です。本人確認前。</p>
   </div>
   <div class="qa">
     <h3 class="qa__h">《セラピストへの質問》</h3>
-    <dl><dt>Q. 出身地は？</dt><dd>埼玉</dd><dt>Q. 前職は？</dt><dd>アパレル販売</dd><dt>Q. 得意なコースは？</dt><dd>スタンダードコース（90分）</dd><dt>Q. 好きな動物は？</dt><dd>犬（実家に柴犬がいます）</dd></dl>
-    <p class="prof__note">※架空のサンプルスタッフです。写真はAI生成、文章もサンプル。実在の人物とは関係ありません。</p>
+    <dl><dt>Q. 出身地は？</dt><dd>広島でデビュー、いまは東京</dd><dt>Q. 前職は？</dt><dd>ホスト</dd><dt>Q. 得意なコースは？</dt><dd>デートコース（Xで発信して広めました）</dd><dt>Q. これからの目標は？</dt><dd>教える側・作る側として、質の高いセラピストを育てること</dd><dt>Q. 著書は？</dt><dd>『はじめての女風、どう選ぶ？』（2026年8月15日・株式会社Sanctuary Japan）</dd><dt>Q. SNSは？</dt><dd>TikTok @himegami_ryo／Instagram himegamiryo／YouTube 姫神ちゃんねる（仮）</dd></dl>
+    <p class="prof__note">※回答は社内ヒアリングと公開プロフィールから。本人確認前の仮回答です。</p>
   </div>
 </section>
 
 <section class="sec sec--dark">
   <div class="sec__head"><h2 class="sec__en">Schedule</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">出勤情報</p></div>
-  <p class="sched">出勤情報はサンプルです。</p>
+  <p class="sched">出勤情報はサンプルです。確定したらここに載せます。</p>
+  <p class="tp__std2"><a href="../therapist/himegami_std.html">性病検査結果（準備中）<span aria-hidden="true">›</span></a></p>
 </section>
 </main>
 
@@ -830,7 +871,6 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
   <div class="ft__in">
     <div class="logo-jw"><img src="../img/logo_rose.png" alt="JEWEL TOKYO" width="1000" height="364" loading="lazy"></div>
     <p class="ft__title">女性用風俗《JEWEL 東京本店》</p>
-    <p class="ft__tel">TEL：050-0000-0000</p>
     <p class="ft__hours">24時間営業（受付：10時-翌4時）</p>
     <div class="ft__btns">
       <a class="btn-ft" href="../reserve.html#form"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg> WEB予約</a>
@@ -857,7 +897,7 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 </div>
 <script>
 (function(){
-var HOOK="https://discord.com/api/webhooks/1552508839344218227/1Uci4i0ET4EHNJuc8wpCyP-MyHl1D1c6i2j1UCi4CfsgT4YwfjP6UOPtC3b761Eg03U-",VER="hp1",KEY='jofu-memo-on';
+var HOOK="https://discord.com/api/webhooks/1552508839344218227/1Uci4i0ET4EHNJuc8wpCyP-MyHl1D1c6i2j1UCi4CfsgT4YwfjP6UOPtC3b761Eg03U-",VER="hp2",KEY='jofu-memo-on';
 var q=location.search+location.hash;
 if(/[?&#]memo(=|&|$)/.test(q)){try{localStorage.setItem(KEY,'1')}catch(e){}}
 var on=false;try{on=localStorage.getItem(KEY)==='1'}catch(e){}
@@ -884,7 +924,7 @@ secs.forEach(function(sec,i){
   try{var saved=JSON.parse(localStorage.getItem(k)||'null');if(saved){ta.value=saved.text||'';last=saved.sent||'';st.textContent=saved.sent===ta.value&&ta.value?'送信済み '+(saved.at||''):(ta.value?'未送信':'未入力')}}catch(e){}
   var timer=null;
   function send(){var text=ta.value;if(text===last)return;st.textContent='送信中…';
-    var body={username:'HP修正メモ',embeds:[{title:t,description:text.trim()?text:'（空にしました）',fields:[{name:'ページ',value:page,inline:true},{name:'項目',value:t,inline:true},{name:'URL',value:location.href.split('?')[0].split('#')[0]+'#'+id}],color:743592}]};
+    var body={username:'HP修正メモ',embeds:[{title:t,description:text.trim()?text:'（空にしました）',fields:[{name:'ページ',value:page,inline:true},{name:'項目',value:t,inline:true},{name:'版',value:VER,inline:true},{name:'URL',value:location.href.split('?')[0].split('#')[0]+'#'+id}],color:743592}]};
     fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){
       if(!r.ok)throw new Error(r.status);last=text;var at=new Date();var hh=('0'+at.getHours()).slice(-2)+':'+('0'+at.getMinutes()).slice(-2);
       try{localStorage.setItem(k,JSON.stringify({text:text,sent:text,at:hh}))}catch(e){}st.textContent=text.trim()?'送信済み '+hh:'未入力';
@@ -902,15 +942,15 @@ document.getElementById('mm-copy').onclick=function(){var out=[];boxes.forEach(f
 
 
 <input type="checkbox" id="rsv-open" class="rsv__toggle" aria-label="予約方法を選ぶ">
-<div class="rsv__bar"><label class="rsv__btn" for="rsv-open">律 を予約する</label></div>
+<div class="rsv__bar"><label class="rsv__btn" for="rsv-open">姫神リョウ を予約する</label></div>
 <div class="rsv__modal" role="dialog" aria-label="予約方法を選ぶ">
   <label class="rsv__bg" for="rsv-open"></label>
   <div class="rsv__box">
-    <p class="rsv__title">律 を予約する</p>
+    <p class="rsv__title">姫神リョウ を予約する</p>
     <p class="rsv__lead">ご希望の方法を選んでください。LINEはそのまま友だち追加に進みます。</p>
     <a class="rsv__opt" href="../reserve.html"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></span><span><b>店の公式LINEを追加</b><small>まだ決めていない・相談しながら決めたい方</small></span></a>
-    <a class="rsv__opt" href="../reserve.html"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></span><span><b>律 のLINEを追加</b><small>指名が決まっている方。本人に直接届きます</small></span></a>
-    <a class="rsv__opt" href="../reserve_web.html?cast=ritsu"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg></span><span><b>ウェブで予約する</b><small>電話番号の認証のあと、日時とコースを送ります</small></span></a>
+    <a class="rsv__opt" href="../reserve.html"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></span><span><b>姫神リョウ のLINEを追加</b><small>指名が決まっている方。本人に直接届きます</small></span></a>
+    <a class="rsv__opt" href="../reserve_web.html?cast=himegami"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg></span><span><b>ウェブで予約する</b><small>電話番号の認証のあと、日時とコースを送ります</small></span></a>
     <label class="rsv__close" for="rsv-open">閉じる</label>
   </div>
 </div>

@@ -92,6 +92,8 @@ ul{padding:0;list-style:none}
 .video__vol input::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:#fff;cursor:pointer}
 .video__bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)}
 .video__bar-in{height:100%;width:0;background:#fff}
+.video__mute,.video__pp,.video__vol{transition:opacity .6s ease}
+.video__wrap:not(.is-ui) .video__mute,.video__wrap:not(.is-ui) .video__pp,.video__wrap:not(.is-ui) .video__vol{opacity:0;pointer-events:none}
 .tp .video{margin:24px -16px 0}
 .tp .video__cap{text-align:center}
 .video__box{display:block;max-width:660px;margin:0 auto;aspect-ratio:16/9;background:#1b1611;position:relative;overflow:hidden;color:#fff}
@@ -141,7 +143,7 @@ ul{padding:0;list-style:none}
 .tcards--n1{grid-template-columns:minmax(0,1fr);max-width:360px}
 .tcard{text-align:center}
 /* 札の行を横並び同士で揃える（キャッチが2行でも隣とスペック・SNSの高さがずれない）。子要素7つ＝名前/年齢/写真/キャッチ/スペック/SNS/SNS見出し */
-.tcard{display:grid;grid-template-rows:subgrid;grid-row:span 7;align-items:start;row-gap:0}  /* row-gap:0＝親の行間34pxを札の中に持ち込まない */
+.tcard{display:grid;grid-template-rows:subgrid;grid-row:span 7;align-items:start;row-gap:0}  /* row-gap:0＝親の行間34pxを札の中に持ち込まない。行＝名前・年齢・写真・キャッチ・スペック・SNS・SNSの見出し */
 .tcard__catch{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.5em * 2);line-height:1.5;margin:8px 0 6px}
 .tcard .spec{margin:0}
 .tcard .sns{gap:4px;margin-top:8px;flex-wrap:nowrap}
@@ -164,6 +166,12 @@ ul{padding:0;list-style:none}
 .badge--trainee{background:var(--trainee)}
 .badge--owner{background:var(--owner)}
 .tcard__catch{font-size:14px;margin:12px 0 8px;letter-spacing:.04em;min-height:1.6em}
+/* キャッチは1行に収める（2026-10-15 taiki）＝カードの幅÷文字数（--n）で大きさを決める。14pxより大きくはしない */
+/* ※札（.tcard）に container-type を付けると行そろえ（subgrid）が壊れて札が重なる（2026-10-15 実測）→ キャッチの p を入れ物にして、中の span の大きさを決める */
+.tcard__catch{display:block;-webkit-line-clamp:unset;white-space:nowrap;overflow:hidden;min-height:0;letter-spacing:0;container-type:inline-size}
+.tcard__catch span{font-size:min(14px,calc(100cqi / var(--n,12) * .96))}
+/* 写真の下の出勤の帯（TOP CLASS の一覧と同じ「本日 10:30 - 34:00」「次回 10月13日 予定」） */
+.tcard__shift{position:absolute;left:0;right:0;bottom:0;z-index:2;margin:0;padding:6px 4px;background:rgba(20,18,22,.78);color:#fff;font-size:12px;letter-spacing:.04em;text-align:center}
 .spec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 8px;font-family:Arial,sans-serif;font-size:13px}
 .spec div{display:flex;align-items:center;border-bottom:1px solid #444}
 .spec dt{background:#BDB4AC;color:#ddd;font-size:11px;width:22px;height:22px;display:grid;place-items:center;margin-right:8px;font-weight:700}
@@ -268,13 +276,21 @@ ul{padding:0;list-style:none}
 .gal__ths{max-width:420px;margin:10px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .gal__th{aspect-ratio:3/4;overflow:hidden;display:block;border:2px solid transparent}
 .gal__th:first-child{border-color:#fff}
-.tp__catch{font-size:18px;margin-top:22px;letter-spacing:.06em}
-.tp__spec{font-family:Arial,sans-serif;font-size:14px;margin-top:6px}
+.tp__catch{font-size:18px;margin-top:14px;letter-spacing:.06em}   /* 2026-10-15 taiki「そのあたりの隙間をもう少し少なく」22→14 */
+.tp__spec{font-family:Arial,sans-serif;font-size:14px;margin-top:4px}
 .tp__honshimei{font-size:13px;margin-top:6px;color:#ddd}
-.tags{max-width:420px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tags{max-width:420px;margin:12px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
 .tags li{background:#BDB4AC;color:#fff;font-size:11px;padding:8px 4px;border-radius:2px}
-.tp .sns{margin-top:22px}
+.tp .sns{margin-top:12px}
 .tp__std{margin-top:18px}
+/* 性病検査は出勤情報の下へ・主張しない文字だけのリンクに（2026-10-15 taiki「もう少しスタイリッシュなボタンであまり主張しないデザイン」） */
+.tp__std2{margin-top:18px;text-align:center}
+.tp__std2 a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 6px;font-size:12px;letter-spacing:.08em;opacity:.72;border-bottom:1px solid currentColor;line-height:1.2}
+.tp__std2 a span{font-size:15px}
+/* 料金表の開け閉め：▼（開くと▲） */
+.pr__arw{font-size:11px;line-height:1;transition:transform .2s;opacity:.8}
+.pr[open] .pr__arw{transform:rotate(180deg)}
+.pr--fold summary .pr__course{margin-left:auto}
 .btn-std{display:inline-flex;align-items:center;gap:8px;border:1px solid #fff;padding:10px 18px;font-size:13px;min-height:44px}
 .btn-std svg{width:18px;height:18px}
 .tp__video{display:block;position:relative;max-width:420px;margin:24px auto 0;aspect-ratio:16/9;overflow:hidden;background:#000}
@@ -372,7 +388,7 @@ body:has(.rsv__bar){padding-bottom:84px}
   .btn-line{display:inline-block;border:1px solid #fff;padding:9px 34px;font-weight:700;font-size:15px}
   .hd__tel{display:flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:20px;font-weight:700;margin-left:auto}
   .hd__tel svg{width:22px;height:22px}
-  .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5}
+  .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5;margin-left:auto}   /* 電話番号を外した（2026-10-15）ので右寄せはここで */
   .hd__hours b{font-size:15px}
   .burger,.menu,.hd__book{display:none}
   .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:4/1}   /* 2026-10-15 taiki「たての幅が長すぎる」3/1→4/1 */
@@ -927,6 +943,33 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 .pp__index a span{opacity:.6;font-size:12px}
 .bk__list{max-width:640px;margin:0 auto;padding-left:1.6em;display:grid;gap:6px;font-size:15px;line-height:1.7}
 .bk__list li{list-style:decimal}
+/* セラピスト一覧：上の見出しを詰め、札どうし・SNSと次の段の写真の間を詰める（2026-10-15 taiki「1画面に4人の顔がギリギリ見えるくらい」） */
+#tlist{padding-top:10px;padding-bottom:40px}
+#tlist .crumb{margin-bottom:4px}
+#tlist .sec__head{margin-bottom:12px}
+#tlist .sec__en{font-size:32px}
+#tlist .tcards{row-gap:14px}
+#tlist .tcard__name{font-size:19px}
+#tlist .tcard__age{margin:0 0 4px}
+#tlist .tcard__catch{margin:6px 0 4px}
+#tlist .tcard .sns{margin-top:4px}
+#tlist .tcard .sns a{height:28px}
+/* 出勤情報（TOP CLASS の /schedule と同じ1人ずつの並び） */
+.scl{max-width:360px;margin:0 auto;display:grid;gap:44px}
+.scl__item{text-align:center}
+.scl__name{font-size:24px;font-weight:700;letter-spacing:.08em}
+.scl__romaji{font-size:13px;letter-spacing:.12em;opacity:.8;margin:2px 0 10px}
+.scl__photo{display:block;position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:var(--r)}
+.scl__photo .badge{position:absolute;left:8px;top:8px;z-index:2}
+.scl__catch{margin:12px 0 10px;font-size:15px}
+.scl details{border:1px solid rgba(128,128,128,.45);border-radius:999px}
+.scl details[open]{border-radius:16px}
+.scl summary{list-style:none;cursor:pointer;min-height:46px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:700}
+.scl summary::-webkit-details-marker{display:none}
+.scl summary span{font-size:11px;transition:transform .2s}
+.scl details[open] summary span{transform:rotate(180deg)}
+.scl__days{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;padding:4px 18px 16px;text-align:left;font-size:14px}
+.scl__days .off{opacity:.55}
 @media (min-width:900px){.nitem{grid-template-columns:160px 1fr}.vcards{grid-template-columns:repeat(2,1fr)}.cards--2{grid-template-columns:repeat(2,1fr)}.rc-slips{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -945,7 +988,6 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
       <a class="btn-line" href="reserve.html">LINE予約</a>
       <a class="btn-line" href="reserve.html#form">WEB予約</a>
     </div>
-    <div class="hd__tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="currentColor"/></svg><span>050-0000-0000</span></div>
     <div class="hd__hours"><span>営業時間 <b>24時間営業</b></span><span>当日受付 10:00 - 翌04:00</span></div>
     <a class="hd__book" href="booking.html">ご予約はこちら</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
@@ -962,7 +1004,7 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
   <div class="sr__list" id="qr"></div>
 </div>
 <script>
-(function(){var IDX=[{"k": "ページ", "t": "ご利用方法", "u": "service.html", "x": "はじめて 流れ 予約 当日 不安"}, {"k": "ページ", "t": "料金システム", "u": "price.html", "x": "料金 コース 交通費 キャンセル 支払い"}, {"k": "ページ", "t": "在籍セラピスト", "u": "therapist/index.html", "x": "セラピスト 一覧 プロフィール"}, {"k": "ページ", "t": "出勤情報", "u": "schedule.html", "x": "出勤 シフト 今日 明日"}, {"k": "ページ", "t": "ランキング", "u": "ranking.html", "x": "ランキング 人気 順位 全国 前月"}, {"k": "ページ", "t": "ご予約はこちら", "u": "booking.html", "x": "予約 LINE WEB SNS メール"}, {"k": "ページ", "t": "写メ日記", "u": "diary.html", "x": "日記 写真"}, {"k": "ページ", "t": "動画紹介", "u": "video.html", "x": "動画 YouTube TikTok"}, {"k": "ページ", "t": "お知らせ", "u": "news/index.html", "x": "お知らせ ニュース イベント"}, {"k": "ページ", "t": "ラブホテル", "u": "hotel.html", "x": "ホテル 自宅 待ち合わせ"}, {"k": "ページ", "t": "よくある質問", "u": "faq.html", "x": "質問 身バレ 支払い 年齢"}, {"k": "ページ", "t": "安全とプライバシー", "u": "safety.html", "x": "安全 プライバシー 身バレ 明細"}, {"k": "ページ", "t": "ご予約", "u": "reserve.html", "x": "予約 LINE WEB予約 フォーム"}, {"k": "ページ", "t": "お問い合わせ", "u": "contact.html", "x": "問い合わせ 相談 LINE メール"}, {"k": "ページ", "t": "求人案内", "u": "recruit.html", "x": "求人 募集 セラピスト 応募 バック 講習"}, {"k": "ページ", "t": "店舗案内", "u": "store.html", "x": "店舗 営業時間 エリア"}, {"k": "ページ", "t": "ご利用規約", "u": "terms.html", "x": "規約 禁止事項"}, {"k": "ページ", "t": "プライバシーポリシー", "u": "privacy.html", "x": "個人情報 プライバシー"}, {"k": "ページ", "t": "コラム", "u": "column/index.html", "x": "コラム 記事"}, {"k": "セラピスト", "t": "姫神リョウ", "u": "therapist/himegami.html", "x": "Ryo Himegami デートコースを広めた人 レジェンド 業界歴5年 元ホスト 広島デビュー デートコースを広めた人 セラミー ランキング1位 元Xフォロワー2万人 著書あり TikTok 3,000人 教育・採用担当"}, {"k": "セラピスト", "t": "蓮", "u": "therapist/ren.html", "x": "Ren 話し上手より、聞き上手 ゴールド 元美容師 聞き上手 カフェ巡り 初めての方歓迎 落ち着いた声 ワイン好き"}, {"k": "セラピスト", "t": "湊", "u": "therapist/minato.html", "x": "Minato 静かな時間を、一緒に ゴールド 元バーテンダー 落ち着いた雰囲気 映画好き 大人の会話 お酒に詳しい 夜型"}, {"k": "セラピスト", "t": "悠斗", "u": "therapist/yuto.html", "x": "Yuto 一緒にいて、楽な人 シルバー 元カフェ店員 明るい 甘いもの好き 話しやすい 笑顔 年下彼氏感"}, {"k": "セラピスト", "t": "颯", "u": "therapist/hayate.html", "x": "Hayate 大人の余裕を、そのまま シルバー 元営業職 落ち着いた会話 お酒好き スーツ 包容力 30代"}, {"k": "セラピスト", "t": "律", "u": "therapist/ritsu.html", "x": "Ritsu はじめまして、律です 新人 新人 元アパレル 優しい 犬好き 聞き上手 研修修了"}, {"k": "お知らせ", "t": "オープン準備中（仮のお知らせ）", "u": "news/20260922-sample.html", "x": "このお知らせはサンプルです。オープン日・料金・出勤情報が決まり次第、差し替えます。"}, {"k": "お知らせ", "t": "オープン記念イベント（準備中・サンプル）", "u": "news/20260922-open-event.html", "x": "このカードはサンプルです。内容が決まり次第、差し替えます。"}, {"k": "お知らせ", "t": "姫神ちゃんねる（仮）を開設しました", "u": "news/20260920-channel.html", "x": "ぶーちゃんねるとのコラボ動画（前後編）を公開。後編は姫神ちゃんねるで配信中です。"}, {"k": "お知らせ", "t": "著書『はじめての女風、どう選ぶ？』発売", "u": "news/20260815-book.html", "x": "姫神リョウ 初の著書が株式会社Sanctuary Japanより発売されました。女風の選び方を初めての方向けに解説した一冊です。"}, {"k": "コラム", "t": "はじめて女風を使う前に知っておきたいこと", "u": "column/first-time.html", "x": "はじめての方 安全とプライバシー （見本の記事です。文面は開業までに見直します） 予約はLINEで希望を送るだけです。空き状況と、交通費込みの総額が先に返ってきます。納得できなければ、そこでやめて構いません。 当日は、部屋に入ったらまず話す時間があります。嫌なこと、触られたくない所は、ここで伝えてください。言ったことは守られます。 途中でやめたくなったら、理由を言わずにやめられます。 本名は伺いません。ご自宅に郵送物が届くこともありません。"}, {"k": "コラム", "t": "待ち合わせとホテルの決め方", "u": "column/meeting-hotel.html", "x": "ホテルと待ち合わせ はじめての方 （見本の記事です。文面は開業までに見直します） 当店は無店舗型です。お店に来ていただくことはなく、駅やホテルの前などで待ち合わせます。 ホテル代はお客様のご負担で、当日その場でお支払いいただきます。ホテルに入るところを見られたくない方は、ご自宅でのご利用もできます。 待ち合わせ場所は、人目につきにくい所をこちらから提案します。エリアごとの入りやすいホテルの一覧は準備中です。"}, {"k": "写メ日記", "t": "雨の日のおすすめ", "u": "diary/ren-01.html", "x": "蓮"}, {"k": "写メ日記", "t": "はじめての方へ", "u": "diary/minato-01.html", "x": "湊"}, {"k": "写メ日記", "t": "デビューしました", "u": "diary/ritsu-01.html", "x": "律"}];var q=document.getElementById('q'),qc=document.getElementById('qc'),qr=document.getElementById('qr');
+(function(){var IDX=[{"k": "ページ", "t": "ご利用方法", "u": "service.html", "x": "はじめて 流れ 予約 当日 不安"}, {"k": "ページ", "t": "料金システム", "u": "price.html", "x": "料金 コース 交通費 キャンセル 支払い"}, {"k": "ページ", "t": "在籍セラピスト", "u": "therapist/index.html", "x": "セラピスト 一覧 プロフィール"}, {"k": "ページ", "t": "出勤情報", "u": "schedule.html", "x": "出勤 シフト 今日 明日"}, {"k": "ページ", "t": "ランキング", "u": "ranking.html", "x": "ランキング 人気 順位 全国 前月"}, {"k": "ページ", "t": "ご予約はこちら", "u": "booking.html", "x": "予約 LINE WEB SNS メール"}, {"k": "ページ", "t": "写メ日記", "u": "diary.html", "x": "日記 写真"}, {"k": "ページ", "t": "動画紹介", "u": "video.html", "x": "動画 YouTube TikTok"}, {"k": "ページ", "t": "お知らせ", "u": "news/index.html", "x": "お知らせ ニュース イベント"}, {"k": "ページ", "t": "ラブホテル", "u": "hotel.html", "x": "ホテル 自宅 待ち合わせ"}, {"k": "ページ", "t": "よくある質問", "u": "faq.html", "x": "質問 身バレ 支払い 年齢"}, {"k": "ページ", "t": "安全とプライバシー", "u": "safety.html", "x": "安全 プライバシー 身バレ 明細"}, {"k": "ページ", "t": "ご予約", "u": "reserve.html", "x": "予約 LINE WEB予約 フォーム"}, {"k": "ページ", "t": "お問い合わせ", "u": "contact.html", "x": "問い合わせ 相談 LINE メール"}, {"k": "ページ", "t": "求人案内", "u": "recruit.html", "x": "求人 募集 セラピスト 応募 バック 講習"}, {"k": "ページ", "t": "店舗案内", "u": "store.html", "x": "店舗 営業時間 エリア"}, {"k": "ページ", "t": "ご利用規約", "u": "terms.html", "x": "規約 禁止事項"}, {"k": "ページ", "t": "プライバシーポリシー", "u": "privacy.html", "x": "個人情報 プライバシー"}, {"k": "ページ", "t": "コラム", "u": "column/index.html", "x": "コラム 記事"}, {"k": "セラピスト", "t": "律", "u": "therapist/ritsu.html", "x": "Ritsu はじめまして、律です 新人 新人 元アパレル 優しい 犬好き 聞き上手 研修修了"}, {"k": "セラピスト", "t": "蓮", "u": "therapist/ren.html", "x": "Ren 話し上手より、聞き上手 ゴールド 元美容師 聞き上手 カフェ巡り 初めての方歓迎 落ち着いた声 ワイン好き"}, {"k": "セラピスト", "t": "湊", "u": "therapist/minato.html", "x": "Minato 静かな時間を、一緒に ゴールド 元バーテンダー 落ち着いた雰囲気 映画好き 大人の会話 お酒に詳しい 夜型"}, {"k": "セラピスト", "t": "悠斗", "u": "therapist/yuto.html", "x": "Yuto 一緒にいて、楽な人 シルバー 元カフェ店員 明るい 甘いもの好き 話しやすい 笑顔 年下彼氏感"}, {"k": "セラピスト", "t": "颯", "u": "therapist/hayate.html", "x": "Hayate 大人の余裕を、そのまま シルバー 元営業職 落ち着いた会話 お酒好き スーツ 包容力 30代"}, {"k": "セラピスト", "t": "姫神リョウ", "u": "therapist/himegami.html", "x": "Ryo Himegami デートコースを広めた人 レジェンド 業界歴5年 元ホスト 広島デビュー デートコースを広めた人 セラミー ランキング1位 元Xフォロワー2万人 著書あり TikTok 3,000人 教育・採用担当"}, {"k": "お知らせ", "t": "オープン準備中（仮のお知らせ）", "u": "news/20260922-sample.html", "x": "このお知らせはサンプルです。オープン日・料金・出勤情報が決まり次第、差し替えます。"}, {"k": "お知らせ", "t": "オープン記念イベント（準備中・サンプル）", "u": "news/20260922-open-event.html", "x": "このカードはサンプルです。内容が決まり次第、差し替えます。"}, {"k": "お知らせ", "t": "姫神ちゃんねる（仮）を開設しました", "u": "news/20260920-channel.html", "x": "ぶーちゃんねるとのコラボ動画（前後編）を公開。後編は姫神ちゃんねるで配信中です。"}, {"k": "お知らせ", "t": "著書『はじめての女風、どう選ぶ？』発売", "u": "news/20260815-book.html", "x": "姫神リョウ 初の著書が株式会社Sanctuary Japanより発売されました。女風の選び方を初めての方向けに解説した一冊です。"}, {"k": "コラム", "t": "はじめて女風を使う前に知っておきたいこと", "u": "column/first-time.html", "x": "はじめての方 安全とプライバシー （見本の記事です。文面は開業までに見直します） 予約はLINEで希望を送るだけです。空き状況と、交通費込みの総額が先に返ってきます。納得できなければ、そこでやめて構いません。 当日は、部屋に入ったらまず話す時間があります。嫌なこと、触られたくない所は、ここで伝えてください。言ったことは守られます。 途中でやめたくなったら、理由を言わずにやめられます。 本名は伺いません。ご自宅に郵送物が届くこともありません。"}, {"k": "コラム", "t": "待ち合わせとホテルの決め方", "u": "column/meeting-hotel.html", "x": "ホテルと待ち合わせ はじめての方 （見本の記事です。文面は開業までに見直します） 当店は無店舗型です。お店に来ていただくことはなく、駅やホテルの前などで待ち合わせます。 ホテル代はお客様のご負担で、当日その場でお支払いいただきます。ホテルに入るところを見られたくない方は、ご自宅でのご利用もできます。 待ち合わせ場所は、人目につきにくい所をこちらから提案します。エリアごとの入りやすいホテルの一覧は準備中です。"}, {"k": "写メ日記", "t": "雨の日のおすすめ", "u": "diary/ren-01.html", "x": "蓮"}, {"k": "写メ日記", "t": "はじめての方へ", "u": "diary/minato-01.html", "x": "湊"}, {"k": "写メ日記", "t": "デビューしました", "u": "diary/ritsu-01.html", "x": "律"}];var q=document.getElementById('q'),qc=document.getElementById('qc'),qr=document.getElementById('qr');
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function run(){var w=q.value.trim().toLowerCase();if(!w){qc.textContent='キーワードを入れてください。';qr.innerHTML='';return}
 var ws=w.split(/\s+/);var hit=IDX.filter(function(r){var s=(r.t+' '+r.x+' '+r.k).toLowerCase();return ws.every(function(x){return s.indexOf(x)>=0})});
@@ -978,7 +1020,6 @@ var p=new URLSearchParams(location.search).get('q');if(p){q.value=p;run()}})();
   <div class="ft__in">
     <div class="logo-jw"><img src="img/logo_rose.png" alt="JEWEL TOKYO" width="1000" height="364" loading="lazy"></div>
     <p class="ft__title">女性用風俗《JEWEL 東京本店》</p>
-    <p class="ft__tel">TEL：050-0000-0000</p>
     <p class="ft__hours">24時間営業（受付：10時-翌4時）</p>
     <div class="ft__btns">
       <a class="btn-ft" href="reserve.html#form"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg> WEB予約</a>
