@@ -43,6 +43,9 @@ ul{padding:0;list-style:none}
 .brand__jp{font-size:20px}
 .hd__nav,.hd__cta,.hd__tel,.hd__hours{display:none}
 .burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
+/* スマホの右上・三本線の左に「ご予約はこちら」（2026-10-15 taiki）。行き先＝予約の窓口をまとめた booking.html */
+.hd__book{margin-left:auto;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border:1px solid currentColor;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.hd__book ~ .burger{margin-left:4px}
 .burger i{display:block;width:26px;height:2px;background:#fff;margin:3px 0}
 .menu-toggle{position:absolute;opacity:0;width:0;height:0}
 .menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--black);border-top:1px solid #333;padding:8px 0 56px;max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
@@ -51,7 +54,7 @@ ul{padding:0;list-style:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--black);color:#fff}
-.hero__grid{display:grid;grid-template-columns:1fr;aspect-ratio:1/1;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1fr;aspect-ratio:4/3;overflow:hidden}   /* 2026-10-15 taiki「たての幅が長すぎる」1/1→4/3 */
 .hero__panel{position:relative;overflow:hidden}
 .hero__panel + .hero__panel{display:none}
 .hero__over{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 16px 22px;text-align:center;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%)}
@@ -371,8 +374,8 @@ body:has(.rsv__bar){padding-bottom:84px}
   .hd__tel svg{width:22px;height:22px}
   .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5}
   .hd__hours b{font-size:15px}
-  .burger,.menu{display:none}
-  .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:3/1}
+  .burger,.menu,.hd__book{display:none}
+  .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:4/1}   /* 2026-10-15 taiki「たての幅が長すぎる」3/1→4/1 */
   .hero__panel + .hero__panel{display:block}
   .hero__over{justify-content:center;padding-bottom:16px;background:linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.45))}
   .hero .logo-mark{display:flex;margin-bottom:26px}
@@ -752,7 +755,7 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
       <span class="brand__logo"><img src="../img/logo_rose.png" alt="JEWEL TOKYO" width="1000" height="364"></span>
     </a>
     <nav class="hd__nav" aria-label="主要ナビ">
-      <a href="../top.html#top">TOP</a><a href="../price.html">SYSTEM</a><a href="../service.html">SERVICE</a><a href="../schedule.html">SCHEDULE</a>
+      <a href="../top.html#top">TOP</a><a href="../price.html">SYSTEM</a><a href="../service.html">SERVICE</a><a href="../therapist/index.html">THERAPIST</a>
     </nav>
     <div class="hd__cta">
       <a class="btn-line" href="../reserve.html">LINE予約</a>
@@ -760,9 +763,10 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
     </div>
     <div class="hd__tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="currentColor"/></svg><span>050-0000-0000</span></div>
     <div class="hd__hours"><span>営業時間 <b>24時間営業</b></span><span>当日受付 10:00 - 翌04:00</span></div>
+    <a class="hd__book" href="../booking.html">ご予約はこちら</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
     <label for="menu-toggle" class="burger" aria-hidden="true"><i></i><i></i><i></i></label>
-    <nav class="menu" aria-label="全ページ"><ul><li><a href="../top.html">TOP</a></li><li><a href="../service.html">ご利用方法</a></li><li><a href="../price.html">料金システム</a></li><li><a href="../therapist/index.html">在籍セラピスト</a></li><li><a href="../schedule.html">出勤情報</a></li><li><a href="../ranking.html">ランキング</a></li><li><a href="../review.html">口コミ</a></li><li><a href="../diary.html">写メ日記</a></li><li><a href="../column/index.html">コラム</a></li><li><a href="../search.html">検索</a></li><li><a href="../video.html">動画紹介</a></li><li><a href="../news/index.html">お知らせ</a></li><li><a href="../hotel.html">ラブホテル</a></li><li><a href="../faq.html">よくある質問</a></li><li><a href="../recruit.html">求人案内</a></li><li><a href="../contact.html">お問い合わせ</a></li><li><a href="../terms.html">ご利用規約</a></li></ul></nav>
+    <nav class="menu" aria-label="全ページ"><ul><li><a href="../top.html">TOP</a></li><li><a href="../service.html">ご利用方法</a></li><li><a href="../price.html">料金システム</a></li><li><a href="../therapist/index.html">在籍セラピスト</a></li><li><a href="../schedule.html">出勤情報</a></li><li><a href="../ranking.html">ランキング</a></li><li><a href="../diary.html">写メ日記</a></li><li><a href="../column/index.html">コラム</a></li><li><a href="../search.html">検索</a></li><li><a href="../video.html">動画紹介</a></li><li><a href="../news/index.html">お知らせ</a></li><li><a href="../hotel.html">ラブホテル</a></li><li><a href="../faq.html">よくある質問</a></li><li><a href="../recruit.html">求人案内</a></li><li><a href="../contact.html">お問い合わせ</a></li><li><a href="../terms.html">ご利用規約</a></li></ul></nav>
   </div>
 </header>
 
@@ -776,23 +780,27 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
   <div class="gal__ths"><a class="gal__th" href="#p0"><img class="ph" src="../img/staff_ritsu_01.jpg" alt="律 写真1" loading="lazy"></a><a class="gal__th" href="#p1"><img class="ph" src="../img/staff_ritsu_02.jpg" alt="律 写真2" loading="lazy"></a><a class="gal__th" href="#p2"><img class="ph" src="../img/staff_ritsu_03.jpg" alt="律 写真3" loading="lazy"></a></div>
   <p class="tp__catch">《 はじめまして、律です 》</p>
   <p class="tp__spec">Age 24歳 173cm 60kg INFP</p>
-  <p class="tp__honshimei">本指名料 <b>未定</b></p>
+  <p class="tp__honshimei">指名料 <b>無料</b></p>
   <ul class="tags"><li>新人</li><li>元アパレル</li><li>優しい</li><li>犬好き</li><li>聞き上手</li><li>研修修了</li></ul>
   <div class="sns"><a href="../reserve.html" aria-label="LINE"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></a></div><p class="sns__cap">– SNS LINK –</p>
   <p class="tp__std"><a class="btn-std" href="../therapist/ritsu_std.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 12h8M9 16h8" stroke="currentColor" stroke-width="2"/></svg> 性病検査結果（準備中）</a></p>
   
   <div class="prs">
         <details class="pr" open>
-          <summary><span class="pr__cls">新人</span><span class="pr__course">スタンダードコース<small>– 料金表 –</small></span></summary>
-          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">以降30分毎に</span><span class="pr__yen">未定</span></div>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">性感コース<small>– 料金表 –</small></span></summary>
+          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">10,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">12,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">14,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">16,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">2,000円</span></div>
         </details>
         <details class="pr" open>
-          <summary><span class="pr__cls">新人</span><span class="pr__course">お泊まりコース<small>– 料金表 –</small></span></summary>
-          <p class="pr__note">《 未定 》</p><div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">未定</span></div>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">デートコース<small>– 料金表 –</small></span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">8,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">2,000円</span></div>
         </details>
         <details class="pr" open>
-          <summary><span class="pr__cls">新人</span><span class="pr__course">貸し切りコース<small>– 料金表 –</small></span></summary>
-          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">24時間</span><span class="pr__yen">未定</span></div>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">お泊まりコース<small>– 料金表 –</small></span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">30,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">3,000円</span></div>
+        </details>
+        <details class="pr" open>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course">貸切コース<small>– 料金表 –</small></span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">36,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">28,000円</span></div>
         </details></div>
   <p class="tp__reserve"><label class="btn-reserve" for="rsv-open">律 を予約する</label></p>
 </section>
@@ -815,11 +823,6 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 <section class="sec sec--dark">
   <div class="sec__head"><h2 class="sec__en">Schedule</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">出勤情報</p></div>
   <p class="sched">出勤情報はサンプルです。</p>
-</section>
-
-<section class="sec sec--light">
-  <div class="sec__head"><h2 class="sec__en">Review</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">口コミ</p></div>
-  <div class="rvcards"><p class="sched">口コミは準備中です。</p></div>
 </section>
 </main>
 

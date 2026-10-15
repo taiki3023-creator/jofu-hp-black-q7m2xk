@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>口コミを投稿する｜女性用風俗・女風《JEWEL 東京》（黒ベース・ローズゴールド）</title>
+<title>ご予約｜女性用風俗・女風《JEWEL 東京》（黒ベース・ローズゴールド）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -43,6 +43,9 @@ ul{padding:0;list-style:none}
 .brand__jp{font-size:20px}
 .hd__nav,.hd__cta,.hd__tel,.hd__hours{display:none}
 .burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
+/* スマホの右上・三本線の左に「ご予約はこちら」（2026-10-15 taiki）。行き先＝予約の窓口をまとめた booking.html */
+.hd__book{margin-left:auto;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border:1px solid currentColor;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.hd__book ~ .burger{margin-left:4px}
 .burger i{display:block;width:26px;height:2px;background:#fff;margin:3px 0}
 .menu-toggle{position:absolute;opacity:0;width:0;height:0}
 .menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--black);border-top:1px solid #333;padding:8px 0 56px;max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
@@ -51,7 +54,7 @@ ul{padding:0;list-style:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--black);color:#fff}
-.hero__grid{display:grid;grid-template-columns:1fr;aspect-ratio:1/1;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1fr;aspect-ratio:4/3;overflow:hidden}   /* 2026-10-15 taiki「たての幅が長すぎる」1/1→4/3 */
 .hero__panel{position:relative;overflow:hidden}
 .hero__panel + .hero__panel{display:none}
 .hero__over{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 16px 22px;text-align:center;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%)}
@@ -371,8 +374,8 @@ body:has(.rsv__bar){padding-bottom:84px}
   .hd__tel svg{width:22px;height:22px}
   .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5}
   .hd__hours b{font-size:15px}
-  .burger,.menu{display:none}
-  .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:3/1}
+  .burger,.menu,.hd__book{display:none}
+  .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:4/1}   /* 2026-10-15 taiki「たての幅が長すぎる」3/1→4/1 */
   .hero__panel + .hero__panel{display:block}
   .hero__over{justify-content:center;padding-bottom:16px;background:linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.45))}
   .hero .logo-mark{display:flex;margin-bottom:26px}
@@ -918,6 +921,12 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 .rc-ben__lead b{font-size:22px;color:var(--gold)}
 .rc-ben__lead small{letter-spacing:.2em;font-size:11px}
 .rc-qa__k{max-width:680px;margin:18px auto 10px;font-weight:700;font-size:15px}
+/* ご利用方法の目次（料金ページと同じ形）・予約ページの「お送りいただく内容」（2026-10-15） */
+.pp__index{max-width:640px;margin:0 auto 10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.pp__index a{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid rgba(128,128,128,.4);font-size:14px;min-height:44px}
+.pp__index a span{opacity:.6;font-size:12px}
+.bk__list{max-width:640px;margin:0 auto;padding-left:1.6em;display:grid;gap:6px;font-size:15px;line-height:1.7}
+.bk__list li{list-style:decimal}
 @media (min-width:900px){.nitem{grid-template-columns:160px 1fr}.vcards{grid-template-columns:repeat(2,1fr)}.cards--2{grid-template-columns:repeat(2,1fr)}.rc-slips{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -930,7 +939,7 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
       <span class="brand__logo"><img src="img/logo_rose.png" alt="JEWEL TOKYO" width="1000" height="364"></span>
     </a>
     <nav class="hd__nav" aria-label="主要ナビ">
-      <a href="top.html#top">TOP</a><a href="price.html">SYSTEM</a><a href="service.html">SERVICE</a><a href="schedule.html">SCHEDULE</a>
+      <a href="top.html#top">TOP</a><a href="price.html">SYSTEM</a><a href="service.html">SERVICE</a><a href="therapist/index.html">THERAPIST</a>
     </nav>
     <div class="hd__cta">
       <a class="btn-line" href="reserve.html">LINE予約</a>
@@ -938,45 +947,15 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
     </div>
     <div class="hd__tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="currentColor"/></svg><span>050-0000-0000</span></div>
     <div class="hd__hours"><span>営業時間 <b>24時間営業</b></span><span>当日受付 10:00 - 翌04:00</span></div>
+    <a class="hd__book" href="booking.html">ご予約はこちら</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
     <label for="menu-toggle" class="burger" aria-hidden="true"><i></i><i></i><i></i></label>
-    <nav class="menu" aria-label="全ページ"><ul><li><a href="top.html">TOP</a></li><li><a href="service.html">ご利用方法</a></li><li><a href="price.html">料金システム</a></li><li><a href="therapist/index.html">在籍セラピスト</a></li><li><a href="schedule.html">出勤情報</a></li><li><a href="ranking.html">ランキング</a></li><li><a href="review.html">口コミ</a></li><li><a href="diary.html">写メ日記</a></li><li><a href="column/index.html">コラム</a></li><li><a href="search.html">検索</a></li><li><a href="video.html">動画紹介</a></li><li><a href="news/index.html">お知らせ</a></li><li><a href="hotel.html">ラブホテル</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="recruit.html">求人案内</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="terms.html">ご利用規約</a></li></ul></nav>
+    <nav class="menu" aria-label="全ページ"><ul><li><a href="top.html">TOP</a></li><li><a href="service.html">ご利用方法</a></li><li><a href="price.html">料金システム</a></li><li><a href="therapist/index.html">在籍セラピスト</a></li><li><a href="schedule.html">出勤情報</a></li><li><a href="ranking.html">ランキング</a></li><li><a href="diary.html">写メ日記</a></li><li><a href="column/index.html">コラム</a></li><li><a href="search.html">検索</a></li><li><a href="video.html">動画紹介</a></li><li><a href="news/index.html">お知らせ</a></li><li><a href="hotel.html">ラブホテル</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="recruit.html">求人案内</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="terms.html">ご利用規約</a></li></ul></nav>
   </div>
 </header>
 
 <main>
-<section class="sec sec--light"><p class="crumb"><a href="top.html">トップページ</a> &gt; 口コミ &gt; 口コミを投稿する</p><div class="sec__head"><h2 class="sec__en">Review</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">口コミを投稿する</p></div><p class="pg__lead">ご利用いただいたセラピストへの感想をお送りください。</p><style>
-.wsteps{display:flex;justify-content:center;gap:8px;margin:0 auto 22px}.wdot{width:10px;height:10px;border-radius:50%;background:#3A3438}.wdot--on{background:#F3EEE9}
-.wform{max-width:480px;margin:0 auto;background:var(--paper);border-radius:var(--r);padding:20px 16px}
-.wform label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}.wform label:first-child{margin-top:0}
-.wform input,.wform select,.wform textarea{width:100%;font:inherit;font-size:16px;padding:12px;border:1.5px solid #3A3438;border-radius:8px;background:#fff;min-height:48px}
-.wform textarea{min-height:96px}
-.wform .btn-o{width:100%;margin-top:18px}
-.wform,.wform label,.wform .wnote{color:var(--ink)}
-.wform .btn-o{border-color:var(--ink);color:var(--ink);background:transparent}
-.wform .btn-o--fill{background:var(--ink);color:var(--light)}
-.sec--dark .pg__lead{color:var(--light)}
-.sec--dark .wdot{background:#ABA39C}.sec--dark .wdot--on{background:var(--light)}
-.wnote{font-size:12px;color:#ABA39C;line-height:1.7;margin-top:10px}
-.wdone{text-align:center;padding:20px 0}.wdone b{display:block;font-size:20px;margin-bottom:10px}
-.wform .req{font-size:10px;font-weight:700;color:#fff;background:#c1121f;border-radius:3px;padding:1px 5px;margin-left:4px;vertical-align:1px}
-.wform .opt{font-size:10px;font-weight:700;color:var(--ink);border:1px solid #3A3438;border-radius:3px;padding:0 5px;margin-left:4px;vertical-align:1px}
-.wform .w2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.wform .w2>*{min-width:0}
-.wform .wfixed{font-size:15px;padding:10px 0;margin:0}
-.wform .wagree{display:flex;align-items:center;gap:8px;font-weight:700;margin-top:18px}.wform .wagree input{width:20px;height:20px;min-height:0}
-</style><div class="wform">
-  <label for="rp-cast">セラピスト <span class="req">必須</span></label><select id="rp-cast"><option value="himegami">姫神リョウ（レジェンド）</option><option value="ren">蓮（ゴールド）</option><option value="minato">湊（ゴールド）</option><option value="yuto">悠斗（シルバー）</option><option value="hayate">颯（シルバー）</option><option value="ritsu">律（新人）</option></select>
-  <label for="rp-name">投稿者名 <span class="req">必須</span></label><input id="rp-name" type="text" placeholder="ニックネームで構いません">
-  <label for="rp-date">ご利用日 <span class="opt">任意</span></label><input id="rp-date" type="date">
-  <div class="w2"><div><label for="rp-v">ビジュアル</label><select id="rp-v"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div><div><label for="rp-s">接客力</label><select id="rp-s"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div></div>
-  <div class="w2"><div><label for="rp-t">テクニック</label><select id="rp-t"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div><div><label for="rp-m">満足度</label><select id="rp-m"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div></div>
-  <label for="rp-body">本文 <span class="req">必須</span></label><textarea id="rp-body" placeholder="よかったところ、気になったところを自由に"></textarea>
-  <label class="wagree"><input id="rp-ok" type="checkbox"> サイトへの掲載に同意する</label>
-  <p class="wnote">掲載する前に店が内容を確認します。個人が特定できる内容は載せません。</p>
-  <button class="btn-o btn-o--fill" id="rp-send" type="button">投稿する</button>
-  <p class="wnote" id="rp-done" hidden>送信しました（試作のため、実際には送られません）。</p>
-</div>
-<script>document.getElementById('rp-send').onclick=function(){if(!document.getElementById('rp-name').value.trim()||!document.getElementById('rp-body').value.trim()){alert('投稿者名と本文を入力してください');return}if(!document.getElementById('rp-ok').checked){alert('掲載への同意が必要です');return}document.getElementById('rp-done').hidden=false};</script></section>
+<section class="sec sec--light"><p class="crumb"><a href="top.html">トップページ</a> &gt; ご予約はこちら</p><div class="sec__head"><h2 class="sec__en">Reservation</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">ご予約はこちら</p></div><p class="pg__lead">公式LINE・WEB・SNS・メールのどれからでもご予約いただけます。いちばん早いのは公式LINEです。</p><p class="h3">公式LINE</p><div class="cta" style="margin-top:0"><span class="btn-o btn-o--fill" style="opacity:.6">公式LINEで予約する（URL準備中）</span></div><p class="h3">WEB予約</p><div class="cta" style="margin-top:0"><a class="btn-o" href="reserve.html#form">フォームで予約する</a></div><p class="h3">SNS（DM）</p><div class="cta" style="margin-top:0"><span class="btn-o" style="opacity:.6">店のSNS（準備中）</span></div><p class="h3">メール</p><div class="cta" style="margin-top:0"><span class="btn-o" style="opacity:.6">メールで予約する（アドレス準備中）</span></div><p class="h3">ご予約のときにお送りいただく内容</p><ol class="bk__list"><li>お名前（ニックネームで構いません）</li><li>ご利用日時</li><li>指名セラピスト</li><li>ご利用コース</li><li>待ち合わせ方法</li><li>詳しい場所</li><li>ご連絡先</li><li>お支払い方法</li></ol><p class="note">公式LINE・SNS・メールアドレスは開業までに用意します。決まり次第 data.json の site.contact に入れるだけで、このページのボタンが本物になります。</p><div class="cta"><a class="btn-o" href="service.html">ご利用方法を見る</a><a class="btn-o" href="price.html">料金を見る</a><a class="btn-o" href="therapist/index.html">在籍セラピスト</a></div></section>
 </main>
 
 <footer class="ft" id="schedule">

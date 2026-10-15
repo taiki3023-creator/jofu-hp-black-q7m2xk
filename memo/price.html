@@ -43,6 +43,9 @@ ul{padding:0;list-style:none}
 .brand__jp{font-size:20px}
 .hd__nav,.hd__cta,.hd__tel,.hd__hours{display:none}
 .burger{margin-left:auto;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
+/* スマホの右上・三本線の左に「ご予約はこちら」（2026-10-15 taiki）。行き先＝予約の窓口をまとめた booking.html */
+.hd__book{margin-left:auto;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border:1px solid currentColor;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.hd__book ~ .burger{margin-left:4px}
 .burger i{display:block;width:26px;height:2px;background:#fff;margin:3px 0}
 .menu-toggle{position:absolute;opacity:0;width:0;height:0}
 .menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--black);border-top:1px solid #333;padding:8px 0 56px;max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
@@ -51,7 +54,7 @@ ul{padding:0;list-style:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--black);color:#fff}
-.hero__grid{display:grid;grid-template-columns:1fr;aspect-ratio:1/1;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1fr;aspect-ratio:4/3;overflow:hidden}   /* 2026-10-15 taiki「たての幅が長すぎる」1/1→4/3 */
 .hero__panel{position:relative;overflow:hidden}
 .hero__panel + .hero__panel{display:none}
 .hero__over{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 16px 22px;text-align:center;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%)}
@@ -371,8 +374,8 @@ body:has(.rsv__bar){padding-bottom:84px}
   .hd__tel svg{width:22px;height:22px}
   .hd__hours{display:flex;flex-direction:column;font-size:13px;line-height:1.5}
   .hd__hours b{font-size:15px}
-  .burger,.menu{display:none}
-  .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:3/1}
+  .burger,.menu,.hd__book{display:none}
+  .hero__grid{grid-template-columns:repeat(4,minmax(0,1fr));aspect-ratio:4/1}   /* 2026-10-15 taiki「たての幅が長すぎる」3/1→4/1 */
   .hero__panel + .hero__panel{display:block}
   .hero__over{justify-content:center;padding-bottom:16px;background:linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.45))}
   .hero .logo-mark{display:flex;margin-bottom:26px}
@@ -759,10 +762,10 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 .pp__box--black{background:#111}
 .pp__shimei{text-align:center;margin-top:18px;font-size:15px}
 .pp__eq{text-align:center;font-size:26px;color:#888;line-height:1;margin:6px 0}
-.pays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:420px;margin:26px auto 0;border:1px solid #ddd;padding:14px 8px;background:#fff;border-radius:var(--r)}
+.pays{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:360px;margin:26px auto 0;border:1px solid #ddd;padding:16px 8px;background:#fff;border-radius:var(--r)}
 .pay{text-align:center;font-size:12px}
-.pay__ic{display:block;width:36px;height:36px;margin:0 auto 6px;color:#333}
-.pay__ic svg{width:36px;height:36px}
+.pay__ic{display:block;width:44px;height:44px;margin:0 auto 8px;color:var(--gold)}
+.pay__ic svg{width:44px;height:44px}
 .pay b{display:block;font-family:var(--serif);font-size:13px}
 .pay small{color:#888;font-size:11px}
 .pp__notes{max-width:640px;margin:26px auto 0;padding-top:18px;border-top:1px solid var(--gold);font-size:12px;line-height:1.8;color:#333}
@@ -777,6 +780,8 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 .pr__course.badge--silver{background:var(--silver)}
 .pr__course.badge--gold{background:var(--gold-b)}
 .pr__course.badge--legend{background:var(--legend)}
+.pr__course.badge--platinum{background:var(--platinum)}
+.pr__course.badge--new{background:var(--new)}
 @media (min-width:900px){.pp .prs{max-width:640px}}
 
 .pp__box{font-family:var(--serif);border-radius:6px;letter-spacing:.06em}
@@ -808,7 +813,7 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
       <span class="brand__logo"><img src="img/logo_rose.png" alt="JEWEL TOKYO" width="1000" height="364"></span>
     </a>
     <nav class="hd__nav" aria-label="主要ナビ">
-      <a href="top.html#top">TOP</a><a href="price.html">SYSTEM</a><a href="service.html">SERVICE</a><a href="schedule.html">SCHEDULE</a>
+      <a href="top.html#top">TOP</a><a href="price.html">SYSTEM</a><a href="service.html">SERVICE</a><a href="therapist/index.html">THERAPIST</a>
     </nav>
     <div class="hd__cta">
       <a class="btn-line" href="reserve.html">LINE予約</a>
@@ -816,9 +821,10 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
     </div>
     <div class="hd__tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="currentColor"/></svg><span>050-0000-0000</span></div>
     <div class="hd__hours"><span>営業時間 <b>24時間営業</b></span><span>当日受付 10:00 - 翌04:00</span></div>
+    <a class="hd__book" href="booking.html">ご予約はこちら</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
     <label for="menu-toggle" class="burger" aria-hidden="true"><i></i><i></i><i></i></label>
-    <nav class="menu" aria-label="全ページ"><ul><li><a href="top.html">TOP</a></li><li><a href="service.html">ご利用方法</a></li><li><a href="price.html">料金システム</a></li><li><a href="therapist/index.html">在籍セラピスト</a></li><li><a href="schedule.html">出勤情報</a></li><li><a href="ranking.html">ランキング</a></li><li><a href="review.html">口コミ</a></li><li><a href="diary.html">写メ日記</a></li><li><a href="column/index.html">コラム</a></li><li><a href="search.html">検索</a></li><li><a href="video.html">動画紹介</a></li><li><a href="news/index.html">お知らせ</a></li><li><a href="hotel.html">ラブホテル</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="recruit.html">求人案内</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="terms.html">ご利用規約</a></li></ul></nav>
+    <nav class="menu" aria-label="全ページ"><ul><li><a href="top.html">TOP</a></li><li><a href="service.html">ご利用方法</a></li><li><a href="price.html">料金システム</a></li><li><a href="therapist/index.html">在籍セラピスト</a></li><li><a href="schedule.html">出勤情報</a></li><li><a href="ranking.html">ランキング</a></li><li><a href="diary.html">写メ日記</a></li><li><a href="column/index.html">コラム</a></li><li><a href="search.html">検索</a></li><li><a href="video.html">動画紹介</a></li><li><a href="news/index.html">お知らせ</a></li><li><a href="hotel.html">ラブホテル</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="recruit.html">求人案内</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="terms.html">ご利用規約</a></li></ul></nav>
   </div>
 </header>
 
@@ -829,85 +835,143 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
   <div class="pp__hero-over"><div class="sec__head"><h2 class="sec__en">System</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">料金システム</p></div></div>
 </section>
 <section class="sec sec--light pp">
-  <div class="c-note-pp"><p>料金は確定前です。9月14日の打合せで決まった3ランクの基準額だけを載せ、それ以外は「未定」と表示しています。</p></div>
+  <div class="c-note-pp"><p>交通費・キャンセル料は確定前です。決まり次第この欄に載せます。</p></div>
   <div class="sec__head"><h2 class="sec__en">Index</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">目次のご案内</p></div>
-  <ul class="pp__index"><li><a href="#pp0">スタンダードコース <span>&#8964;</span></a></li><li><a href="#pp1">お泊まりコース <span>&#8964;</span></a></li><li><a href="#pp2">貸し切りコース <span>&#8964;</span></a></li><li><a href="#pp3">カップルコース <span>&#8964;</span></a></li><li><a href="#pp4">交通費 <span>&#8964;</span></a></li><li><a href="#pp5">遠方出張 <span>&#8964;</span></a></li><li><a href="#pp6">深夜料金 <span>&#8964;</span></a></li><li><a href="#pp7">キャンセル料 <span>&#8964;</span></a></li></ul>
+  <ul class="pp__index"><li><a href="#pp0">性感コース <span>&#8964;</span></a></li><li><a href="#pp1">デートコース <span>&#8964;</span></a></li><li><a href="#pp2">お泊まりコース <span>&#8964;</span></a></li><li><a href="#pp3">貸切コース <span>&#8964;</span></a></li><li><a href="#pp4">交通費 <span>&#8964;</span></a></li><li><a href="#pp5">深夜帯・遠方 <span>&#8964;</span></a></li><li><a href="#pp6">キャンセル料 <span>&#8964;</span></a></li></ul>
 </section>
 <section class="sec sec--light pp">
   <div class="sec__head"><h2 class="sec__en">About Price</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">ご利用料金について</p></div>
   <div class="pp__formula"><span class="pp__box pp__box--navy">コース料金</span><b>+</b><span class="pp__box pp__box--red">交通費</span></div>
-  <p class="pp__shimei">当店は <b>指名料 未定</b> です</p>
+  <p class="pp__shimei">当店は <b>全セラピスト指名料無料</b> です</p>
   <p class="pp__eq">||</p>
   <div class="pp__formula"><span class="pp__box pp__box--black">ご利用料金</span></div>
-  <div class="pays"><div class="pay"><span class="pay__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 12h8M9 16h8" stroke="currentColor" stroke-width="2"/></svg></span><b>現金払い</b><small>予定</small></div><div class="pay"><span class="pay__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg></span><b>銀行振込</b><small>予定</small></div><div class="pay"><span class="pay__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg></span><b>クレカ決済</b><small>未定</small></div></div>
-  <ul class="pp__notes"><li>ホテル代、ご飲食代、その他施設利用料金など、サービスのご提供中にかかる費用はお客様のご負担となります。</li><li>深夜帯・遠方のご予約の追加料金は未定です。決まり次第この欄に載せます。</li><li>表示料金はすべて税込みです。</li></ul>
+  <div class="pays"><div class="pay"><span class="pay__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="13" width="38" height="22" rx="2.5"/><circle cx="24" cy="24" r="6.5"/><path d="M21.4 20.8l2.6 3.4 2.6-3.4M24 24.2v4.6M21.6 25.6h4.8M21.6 27.6h4.8"/><path d="M9.5 17.5h3.5M35 30.5h3.5"/></svg></span><b>現金払い</b></div><div class="pay"><span class="pay__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5L24 9l17 9.5"/><path d="M9 19.5h30"/><path d="M13 23v10M20 23v10M28 23v10M35 23v10"/><path d="M9 36h30M6.5 40h35"/></svg></span><b>銀行振込</b></div></div>
+  <ul class="pp__notes"><li>ホテル代、ご飲食代、その他施設利用料金など、サービスのご提供中にかかる費用はお客様のご負担となります。</li><li>深夜帯・遠方のご予約に、追加料金はかかりません。</li><li>公共交通機関が動いていない時間帯は、セラピストの移動にタクシー代がかかる場合があります。</li><li>クレジットカードはご利用いただけません。</li><li>銀行振込にかかる手数料はお客様のご負担となります。</li><li>表示料金はすべて税込みです。</li></ul>
 </section>
 
 <section class="sec sec--dark pp" id="pp0">
-  <div class="sec__head"><h2 class="sec__en">Standard Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">スタンダードコース</p></div>
+  <div class="sec__head"><h2 class="sec__en">Sensual Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">性感コース</p></div>
+  <p class="pp__lead">女性用風俗ならではの性感マッサージをお楽しみいただける、当店の基本コース。初めてのご利用には120分コースがおすすめです。</p>
   <div class="prs">
         <details class="pr pr--cls" open>
-          <summary><span class="pr__cls">シルバークラス（新人）</span><span class="pr__course badge--silver">SILVER CLASS<small>-シルバークラス（新人）-</small></span></summary>
-          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">16,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">以降30分毎に</span><span class="pr__yen">未定</span></div>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course badge--new">NEW FACE<small>-ニューフェイス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">10,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">12,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">14,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">16,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">2,000円</span></div>
         </details>
         <details class="pr pr--cls" open>
-          <summary><span class="pr__cls">ゴールドクラス（中堅）</span><span class="pr__course badge--gold">GOLD CLASS<small>-ゴールドクラス（中堅）-</small></span></summary>
-          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">19,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">以降30分毎に</span><span class="pr__yen">未定</span></div>
+          <summary><span class="pr__cls">シルバークラス</span><span class="pr__course badge--silver">SILVER CLASS<small>-シルバークラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">16,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">20,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">24,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">28,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">4,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ゴールドクラス</span><span class="pr__course badge--gold">GOLD CLASS<small>-ゴールドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">19,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">24,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">29,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">34,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">5,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">プラチナクラス</span><span class="pr__course badge--platinum">PLATINUM CLASS<small>-プラチナクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">22,000円</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">28,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">34,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">40,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">6,000円</span></div>
         </details>
         <details class="pr pr--cls" open>
           <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course badge--legend">LEGEND CLASS<small>-レジェンドクラス-</small></span></summary>
-          <div class="pr__row"><span class="pr__min">90分</span><span class="pr__yen">—</span></div><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">50,000円〜</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">以降30分毎に</span><span class="pr__yen">未定</span></div>
+          <div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">50,000円</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">60,000円</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">70,000円</span></div><div class="pr__row"><span class="pr__min">延長30分</span><span class="pr__yen">10,000円</span></div>
         </details></div>
-  <p class="pp__lead">女風ならではの性感マッサージをお楽しみいただく基本コース。初めてのご利用には120分コースがおすすめです。</p>
-  <ul class="pp__notes pp__notes--dark"><li>コースに含まれる内容（洗体・マッサージなど）は未定です。決まり次第載せます。</li><li>お食事や外でのデート利用も可能です（デートコースの扱いは未定）。</li><li>施術開始後の延長料金は未定です。</li><li>表示料金はすべて税込みです。</li></ul>
+  <ul class="pp__notes pp__notes--dark"><li>お食事や外でのデートと組み合わせることもできます。</li><li>施術開始後の延長は、クラスごとの延長料金（30分ごと）でお受けします。</li><li>レジェンドクラスは120分からのご案内です。</li><li>表示料金はすべて税込みです。</li></ul>
 </section>
-
 <section class="sec sec--light pp" id="pp1">
-  <div class="sec__head"><h2 class="sec__en">Overnight Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">お泊まりコース</p></div>
-  <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">11時間</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">22時から翌朝10時まで、2人きりの夜をゆっくりと。</p>
-  
+  <div class="sec__head"><h2 class="sec__en">Date Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">デートコース</p></div>
+  <p class="pp__lead">お食事やお出かけなど、セラピストとのデートを楽しむコースです。</p>
+  <div class="prs">
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course badge--new">NEW FACE<small>-ニューフェイス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">8,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">2,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">シルバークラス</span><span class="pr__course badge--silver">SILVER CLASS<small>-シルバークラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">16,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">6,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ゴールドクラス</span><span class="pr__course badge--gold">GOLD CLASS<small>-ゴールドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">20,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">8,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">プラチナクラス</span><span class="pr__course badge--platinum">PLATINUM CLASS<small>-プラチナクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">24,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">10,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course badge--legend">LEGEND CLASS<small>-レジェンドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">2時間</span><span class="pr__yen">40,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">15,000円</span></div>
+        </details></div>
+  <ul class="pp__notes"><li>延長は1時間ごとにお受けします。</li><li>デート中のご飲食代などはお客様のご負担となります。</li><li>表示料金はすべて税込みです。</li></ul>
 </section>
-
 <section class="sec sec--dark pp" id="pp2">
-  <div class="sec__head"><h2 class="sec__en">Private Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">貸し切りコース</p></div>
-  <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">24時間</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">以降12時間毎に</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">温泉旅行や遊園地デートなど、お気に入りのセラピストをひとり占め。</p>
-  
+  <div class="sec__head"><h2 class="sec__en">Overnight Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">お泊まりコース</p></div>
+  <p class="pp__lead">2人きりの夜を、ごゆっくりと。</p>
+  <div class="prs">
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course badge--new">NEW FACE<small>-ニューフェイス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">30,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">3,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">シルバークラス</span><span class="pr__course badge--silver">SILVER CLASS<small>-シルバークラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">50,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">5,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ゴールドクラス</span><span class="pr__course badge--gold">GOLD CLASS<small>-ゴールドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">60,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">6,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">プラチナクラス</span><span class="pr__course badge--platinum">PLATINUM CLASS<small>-プラチナクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">70,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">7,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course badge--legend">LEGEND CLASS<small>-レジェンドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">10時間</span><span class="pr__yen">150,000円</span></div><div class="pr__row"><span class="pr__min">延長1時間</span><span class="pr__yen">15,000円</span></div>
+        </details></div>
+  <ul class="pp__notes pp__notes--dark"><li>延長は1時間ごとにお受けします。</li><li>セラピストには睡眠の時間を確保させていただきます。</li><li>表示料金はすべて税込みです。</li></ul>
 </section>
-
 <section class="sec sec--light pp" id="pp3">
-  <div class="sec__head"><h2 class="sec__en">Couple Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">カップルコース</p></div>
-  <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">120分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">150分</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">180分</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">カップルで楽しむ新しい形。男女2名でご利用いただけるコースです。</p>
-  
+  <div class="sec__head"><h2 class="sec__en">Private Course</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">貸切コース</p></div>
+  <p class="pp__lead">温泉旅行や遊園地デートなど、お気に入りのセラピストをひとり占め。恋人のようなお時間を贅沢にお楽しみください。</p>
+  <div class="prs">
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ニューフェイス</span><span class="pr__course badge--new">NEW FACE<small>-ニューフェイス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">36,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">28,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">シルバークラス</span><span class="pr__course badge--silver">SILVER CLASS<small>-シルバークラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">60,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">48,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">ゴールドクラス</span><span class="pr__course badge--gold">GOLD CLASS<small>-ゴールドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">72,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">58,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">プラチナクラス</span><span class="pr__course badge--platinum">PLATINUM CLASS<small>-プラチナクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">84,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">68,000円</span></div>
+        </details>
+        <details class="pr pr--cls" open>
+          <summary><span class="pr__cls">レジェンドクラス</span><span class="pr__course badge--legend">LEGEND CLASS<small>-レジェンドクラス-</small></span></summary>
+          <div class="pr__row"><span class="pr__min">12時間</span><span class="pr__yen">180,000円</span></div><div class="pr__row"><span class="pr__min">延長12時間</span><span class="pr__yen">150,000円</span></div>
+        </details></div>
+  <ul class="pp__notes"><li>延長は12時間ごとにお受けします。</li><li>旅行中にかかる費用（セラピストの交通費・ご飲食代など）はお客様のご負担となります。</li><li>表示料金はすべて税込みです。</li></ul>
 </section>
 
 <section class="sec sec--dark pp" id="pp4">
   <div class="sec__head"><h2 class="sec__en">Transportation</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">交通費</p></div>
+  <p class="pp__lead">待ち合わせ場所までの交通費をいただきます（金額は確定前です）。</p>
   <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">新宿駅周辺</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">20分以内</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">40分以内</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">60分以内</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">新宿駅からの片道所要時間に応じて交通費が発生します（金額は未定）。</p>
   
 </section>
 
 <section class="sec sec--light pp" id="pp5">
-  <div class="sec__head"><h2 class="sec__en">Extended Area Visit</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">遠方出張</p></div>
-  <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">往復交通費</span><span class="pr__yen">実費（予定）</span></div><div class="pr__row"><span class="pr__min">出張費</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">片道1時間以上のエリアは、往復交通費の実費に加えて所要時間に応じた出張費が発生します（金額は未定）。</p>
-  
+  <div class="sec__head"><h2 class="sec__en">Late Night / Long Distance</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">深夜帯・遠方のご予約</p></div>
+  <p class="pp__lead">深夜帯・遠方のご予約に、追加料金はかかりません。</p>
+  <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">深夜帯のご予約</span><span class="pr__yen">追加料金なし</span></div><div class="pr__row"><span class="pr__min">遠方へのご予約</span><span class="pr__yen">追加料金なし</span></div></details></div>
+  <ul class="pp__notes"><li>公共交通機関が動いていない時間帯は、セラピストの移動にタクシー代がかかる場合があります。</li></ul>
 </section>
 
 <section class="sec sec--dark pp" id="pp6">
-  <div class="sec__head"><h2 class="sec__en">Late Night Fee</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">深夜料金</p></div>
-  <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">開始時間 00:00〜06:00</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">深夜帯のご予約には別途深夜料金をいただきます（金額は未定）。</p>
-  
-</section>
-
-<section class="sec sec--light pp" id="pp7">
   <div class="sec__head"><h2 class="sec__en">Cancel Policy</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">キャンセル料</p></div>
+  <p class="pp__lead">キャンセル料の規定は確定前です。決まり次第載せます。</p>
   <div class="prs"><details class="pr" open><summary><span class="pr__cls">料金</span></summary><div class="pr__row"><span class="pr__min">前日まで</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">当日</span><span class="pr__yen">未定</span></div><div class="pr__row"><span class="pr__min">無断キャンセル</span><span class="pr__yen">未定</span></div></details></div>
-  <p class="pp__lead">キャンセル料の規定は未定です。決まり次第載せます。</p>
   
 </section>
 
