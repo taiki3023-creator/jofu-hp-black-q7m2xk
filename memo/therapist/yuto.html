@@ -600,6 +600,31 @@ body{font-weight:500;letter-spacing:.04em;line-height:1.7}
   .btn-ft--green{background:#06c755;border-color:#06c755}
 }
 
+/* ランキング：右側の文字を縦に詰めて、写真の高さに近づける（taiki） */
+.rrow{align-items:center}
+.rrow__body{display:grid;gap:3px;justify-items:center;align-content:center}
+.laurel{width:50px;height:44px;margin:0 auto 2px}
+.laurel svg{width:100%;height:100%}
+.rrow__en{font-size:14px;line-height:1.2;margin:0}
+.rrow__jp{font-size:11px;line-height:1.3;margin:0}
+.rrow__name{font-size:21px;line-height:1.25;margin:2px 0 0}
+.rrow__catch{font-size:11px;line-height:1.4;margin:0}
+.rrow__pt{font-size:16px;gap:6px;margin:2px 0 0}
+.rrow__pt small{font-size:11px}
+.coin{width:20px;height:20px;font-size:8px}
+.rrow .sns{margin-top:2px;gap:14px}
+.rrow .sns a{width:30px;height:30px}
+.rrow .sns__cap{margin-top:-2px}
+/* トップの在籍セラピスト：下の段とのすき間を詰める（taiki） */
+#therapist .tcards{row-gap:16px}
+#therapist .tcard__age{margin:0 0 4px}
+#therapist .tcard__catch{margin:6px 0 4px}
+#therapist .tcard .sns{margin-top:4px}
+/* 個人ページ：名前の下の英字を小さく、縦のすき間を詰める（taiki） */
+.tp__cls{margin-bottom:0}
+.tp__name{margin-top:6px;line-height:1.25}
+.tp__romaji{font-size:13px;line-height:1.3;margin:2px 0 10px;letter-spacing:.08em}
+
 /* ===== 黒ベース・ローズゴールド ===== */
 :root{--en:"Marcellus","Times New Roman",Georgia,serif;--serif:"Noto Sans JP","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif}
 body{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif;color:#F3EEE9;background-color:#0E0D0F;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciIHZpZXdCb3g9IjAgMCAyNDAgNDE1LjciPjxkZWZzPjxtYXNrIGlkPSJnYXAiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciPjxyZWN0IHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIwLjAiIGN5PSIwLjAiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIwLjAiIGN5PSIyMDcuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjAuMCIgY3k9IjQxNS43IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSIwLjAiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxMjAuMCIgY3k9IjIwNy44IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSI0MTUuNyIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjI0MC4wIiBjeT0iMC4wIiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMjQwLjAiIGN5PSIyMDcuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjI0MC4wIiBjeT0iNDE1LjciIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI2MC4wIiBjeT0iMTAzLjkiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI2MC4wIiBjeT0iMzExLjgiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxODAuMCIgY3k9IjEwMy45IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTgwLjAiIGN5PSIzMTEuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjwvbWFzaz48ZyBpZD0iZHIiPjxnIHRyYW5zZm9ybT0ic2NhbGUoMC4xNTQwOSkgdHJhbnNsYXRlKC0wLjAwIDIwLjIxKSI+PG1hc2sgaWQ9ImtqIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItNDAwMCIgeT0iLTQwMDAiIHdpZHRoPSI4MDAwIiBoZWlnaHQ9IjgwMDAiPjxyZWN0IHg9Ii00MDAwIiB5PSItNDAwMCIgd2lkdGg9IjgwMDAiIGhlaWdodD0iODAwMCIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0wIC00OC41OSBBNjEuOCA2MS44IDAgMCAwIC0yMy42MSAwIEEyMy42MSAyMy42MSAwIDAgMCAyMy42MSAwIEE2MS44IDYxLjggMCAwIDAgMCAtNDguNTkgWiBNMCAtNDguNTlMMCAtNzguNjIgTS0yMy42MSAwTC0zOC4yIDAgTTIzLjYxIDBMMzguMiAwIE0wIDIzLjYxTDAgMzguMiBNLTE2LjY5IDE2LjY5TC0yNy4wMSAyNy4wMSBNMTYuNjkgMTYuNjlMMjcuMDEgMjcuMDEgTS0xOC42MyAtMjQuMjlMLTMwLjE1IC0zOS4zMSBNMTguNjMgLTI0LjI5TDMwLjE1IC0zOS4zMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjcuNDYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvbWFzaz48cGF0aCBkPSJNMCAtNzguNjIgQTEwMCAxMDAgMCAwIDAgLTM4LjIgMCBBMzguMiAzOC4yIDAgMCAwIDM4LjIgMCBBMTAwIDEwMCAwIDAgMCAwIC03OC42MiBaIiBtYXNrPSJ1cmwoI2tqKSIvPjwvZz48L2c+PC9kZWZzPjxwYXRoIGQ9Ik0wLjAgMC4wTDI0MC4wIDAuME0wLjAgMjA3LjhMMjQwLjAgMjA3LjhNMC4wIDAuMEwyNDAuMCA0MTUuN00xMjAuMCAwLjBMMjQwLjAgMjA3LjhNMC4wIDIwNy44TDEyMC4wIDQxNS43TTI0MC4wIDAuMEwwLjAgNDE1LjdNMTIwLjAgMC4wTDAuMCAyMDcuOE0yNDAuMCAyMDcuOEwxMjAuMCA0MTUuNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTlDMkE2IiBzdHJva2Utb3BhY2l0eT0iMC4wNyIgc3Ryb2tlLXdpZHRoPSIwLjgiIG1hc2s9InVybCgjZ2FwKSIvPjxnIGZpbGw9IiNFOUMyQTYiIGZpbGwtb3BhY2l0eT0iMC4xNiI+PHVzZSBocmVmPSIjZHIiIHg9IjAuMCIgeT0iMC4wIi8+PHVzZSBocmVmPSIjZHIiIHg9IjAuMCIgeT0iMjA3LjgiLz48dXNlIGhyZWY9IiNkciIgeD0iMC4wIiB5PSI0MTUuNyIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxMjAuMCIgeT0iMC4wIi8+PHVzZSBocmVmPSIjZHIiIHg9IjEyMC4wIiB5PSIyMDcuOCIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxMjAuMCIgeT0iNDE1LjciLz48dXNlIGhyZWY9IiNkciIgeD0iMjQwLjAiIHk9IjAuMCIvPjx1c2UgaHJlZj0iI2RyIiB4PSIyNDAuMCIgeT0iMjA3LjgiLz48dXNlIGhyZWY9IiNkciIgeD0iMjQwLjAiIHk9IjQxNS43Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjYwLjAiIHk9IjEwMy45Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjYwLjAiIHk9IjMxMS44Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjE4MC4wIiB5PSIxMDMuOSIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxODAuMCIgeT0iMzExLjgiLz48L2c+PC9zdmc+),radial-gradient(60% 40% at 0% 0%,rgba(233,194,166,.10),transparent 70%),radial-gradient(50% 40% at 100% 100%,rgba(183,163,217,.08),transparent 70%);background-size:240px 415.7px,100% 100%,100% 100%;background-attachment:scroll,fixed,fixed}
@@ -635,6 +660,7 @@ a{color:inherit}
 .sec--dark{background:#1C1219;background-image:none;color:#F3EEE9}
 #therapist{position:relative;background:#1C1219}
 #therapist::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px;pointer-events:none;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDEyIj48cGF0aCBkPSJNMCAxMkwxMi4wIDBMMjQgMTJaIiBmaWxsPSIjMUMxMjE5Ii8+PC9zdmc+) 0 0/24px 12px repeat-x}
+.video ~ #therapist::before{content:none}   /* 動画のすぐ下はまっすぐ（ギザギザが動画の下を隠す。2026-10-15 taiki「ここに関してはまっすぐにして」）。間に動画用の script があるので「+」ではなく「~」 */
 #ranking{position:relative;background:#10131A}
 #ranking::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px;pointer-events:none;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDEyIj48cGF0aCBkPSJNMCAxMkwxMi4wIDBMMjQgMTJaIiBmaWxsPSIjMTAxMzFBIi8+PC9zdmc+) 0 0/24px 12px repeat-x}
 .tp{background:#1C1219;background-image:none;color:#F3EEE9}
@@ -922,7 +948,7 @@ document.getElementById('mm-copy').onclick=function(){var out=[];boxes.forEach(f
     <p class="rsv__lead">ご希望の方法を選んでください。LINEはそのまま友だち追加に進みます。</p>
     <a class="rsv__opt" href="../reserve.html"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></span><span><b>店の公式LINEを追加</b><small>まだ決めていない・相談しながら決めたい方</small></span></a>
     <a class="rsv__opt" href="../reserve.html"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg></span><span><b>悠斗 のLINEを追加</b><small>指名が決まっている方。本人に直接届きます</small></span></a>
-    <a class="rsv__opt" href="../reserve_web.html?cast=yuto"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg></span><span><b>ウェブで予約する</b><small>電話番号の認証のあと、日時とコースを送ります</small></span></a>
+    <a class="rsv__opt" href="../reserve_web.html?cast=yuto"><span class="rsv__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg></span><span><b>ウェブで予約する</b><small>日時とコースを入力して送ります</small></span></a>
     <label class="rsv__close" for="rsv-open">閉じる</label>
   </div>
 </div>

@@ -600,6 +600,31 @@ body{font-weight:500;letter-spacing:.04em;line-height:1.7}
   .btn-ft--green{background:#06c755;border-color:#06c755}
 }
 
+/* ランキング：右側の文字を縦に詰めて、写真の高さに近づける（taiki） */
+.rrow{align-items:center}
+.rrow__body{display:grid;gap:3px;justify-items:center;align-content:center}
+.laurel{width:50px;height:44px;margin:0 auto 2px}
+.laurel svg{width:100%;height:100%}
+.rrow__en{font-size:14px;line-height:1.2;margin:0}
+.rrow__jp{font-size:11px;line-height:1.3;margin:0}
+.rrow__name{font-size:21px;line-height:1.25;margin:2px 0 0}
+.rrow__catch{font-size:11px;line-height:1.4;margin:0}
+.rrow__pt{font-size:16px;gap:6px;margin:2px 0 0}
+.rrow__pt small{font-size:11px}
+.coin{width:20px;height:20px;font-size:8px}
+.rrow .sns{margin-top:2px;gap:14px}
+.rrow .sns a{width:30px;height:30px}
+.rrow .sns__cap{margin-top:-2px}
+/* トップの在籍セラピスト：下の段とのすき間を詰める（taiki） */
+#therapist .tcards{row-gap:16px}
+#therapist .tcard__age{margin:0 0 4px}
+#therapist .tcard__catch{margin:6px 0 4px}
+#therapist .tcard .sns{margin-top:4px}
+/* 個人ページ：名前の下の英字を小さく、縦のすき間を詰める（taiki） */
+.tp__cls{margin-bottom:0}
+.tp__name{margin-top:6px;line-height:1.25}
+.tp__romaji{font-size:13px;line-height:1.3;margin:2px 0 10px;letter-spacing:.08em}
+
 /* ===== 黒ベース・ローズゴールド ===== */
 :root{--en:"Marcellus","Times New Roman",Georgia,serif;--serif:"Noto Sans JP","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif}
 body{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif;color:#F3EEE9;background-color:#0E0D0F;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciIHZpZXdCb3g9IjAgMCAyNDAgNDE1LjciPjxkZWZzPjxtYXNrIGlkPSJnYXAiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciPjxyZWN0IHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIwLjAiIGN5PSIwLjAiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIwLjAiIGN5PSIyMDcuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjAuMCIgY3k9IjQxNS43IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSIwLjAiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxMjAuMCIgY3k9IjIwNy44IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSI0MTUuNyIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjI0MC4wIiBjeT0iMC4wIiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMjQwLjAiIGN5PSIyMDcuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjI0MC4wIiBjeT0iNDE1LjciIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI2MC4wIiBjeT0iMTAzLjkiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI2MC4wIiBjeT0iMzExLjgiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxODAuMCIgY3k9IjEwMy45IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTgwLjAiIGN5PSIzMTEuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjwvbWFzaz48ZyBpZD0iZHIiPjxnIHRyYW5zZm9ybT0ic2NhbGUoMC4xNTQwOSkgdHJhbnNsYXRlKC0wLjAwIDIwLjIxKSI+PG1hc2sgaWQ9ImtqIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItNDAwMCIgeT0iLTQwMDAiIHdpZHRoPSI4MDAwIiBoZWlnaHQ9IjgwMDAiPjxyZWN0IHg9Ii00MDAwIiB5PSItNDAwMCIgd2lkdGg9IjgwMDAiIGhlaWdodD0iODAwMCIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0wIC00OC41OSBBNjEuOCA2MS44IDAgMCAwIC0yMy42MSAwIEEyMy42MSAyMy42MSAwIDAgMCAyMy42MSAwIEE2MS44IDYxLjggMCAwIDAgMCAtNDguNTkgWiBNMCAtNDguNTlMMCAtNzguNjIgTS0yMy42MSAwTC0zOC4yIDAgTTIzLjYxIDBMMzguMiAwIE0wIDIzLjYxTDAgMzguMiBNLTE2LjY5IDE2LjY5TC0yNy4wMSAyNy4wMSBNMTYuNjkgMTYuNjlMMjcuMDEgMjcuMDEgTS0xOC42MyAtMjQuMjlMLTMwLjE1IC0zOS4zMSBNMTguNjMgLTI0LjI5TDMwLjE1IC0zOS4zMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjcuNDYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvbWFzaz48cGF0aCBkPSJNMCAtNzguNjIgQTEwMCAxMDAgMCAwIDAgLTM4LjIgMCBBMzguMiAzOC4yIDAgMCAwIDM4LjIgMCBBMTAwIDEwMCAwIDAgMCAwIC03OC42MiBaIiBtYXNrPSJ1cmwoI2tqKSIvPjwvZz48L2c+PC9kZWZzPjxwYXRoIGQ9Ik0wLjAgMC4wTDI0MC4wIDAuME0wLjAgMjA3LjhMMjQwLjAgMjA3LjhNMC4wIDAuMEwyNDAuMCA0MTUuN00xMjAuMCAwLjBMMjQwLjAgMjA3LjhNMC4wIDIwNy44TDEyMC4wIDQxNS43TTI0MC4wIDAuMEwwLjAgNDE1LjdNMTIwLjAgMC4wTDAuMCAyMDcuOE0yNDAuMCAyMDcuOEwxMjAuMCA0MTUuNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTlDMkE2IiBzdHJva2Utb3BhY2l0eT0iMC4wNyIgc3Ryb2tlLXdpZHRoPSIwLjgiIG1hc2s9InVybCgjZ2FwKSIvPjxnIGZpbGw9IiNFOUMyQTYiIGZpbGwtb3BhY2l0eT0iMC4xNiI+PHVzZSBocmVmPSIjZHIiIHg9IjAuMCIgeT0iMC4wIi8+PHVzZSBocmVmPSIjZHIiIHg9IjAuMCIgeT0iMjA3LjgiLz48dXNlIGhyZWY9IiNkciIgeD0iMC4wIiB5PSI0MTUuNyIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxMjAuMCIgeT0iMC4wIi8+PHVzZSBocmVmPSIjZHIiIHg9IjEyMC4wIiB5PSIyMDcuOCIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxMjAuMCIgeT0iNDE1LjciLz48dXNlIGhyZWY9IiNkciIgeD0iMjQwLjAiIHk9IjAuMCIvPjx1c2UgaHJlZj0iI2RyIiB4PSIyNDAuMCIgeT0iMjA3LjgiLz48dXNlIGhyZWY9IiNkciIgeD0iMjQwLjAiIHk9IjQxNS43Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjYwLjAiIHk9IjEwMy45Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjYwLjAiIHk9IjMxMS44Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjE4MC4wIiB5PSIxMDMuOSIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxODAuMCIgeT0iMzExLjgiLz48L2c+PC9zdmc+),radial-gradient(60% 40% at 0% 0%,rgba(233,194,166,.10),transparent 70%),radial-gradient(50% 40% at 100% 100%,rgba(183,163,217,.08),transparent 70%);background-size:240px 415.7px,100% 100%,100% 100%;background-attachment:scroll,fixed,fixed}
@@ -635,6 +660,7 @@ a{color:inherit}
 .sec--dark{background:#1C1219;background-image:none;color:#F3EEE9}
 #therapist{position:relative;background:#1C1219}
 #therapist::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px;pointer-events:none;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDEyIj48cGF0aCBkPSJNMCAxMkwxMi4wIDBMMjQgMTJaIiBmaWxsPSIjMUMxMjE5Ii8+PC9zdmc+) 0 0/24px 12px repeat-x}
+.video ~ #therapist::before{content:none}   /* 動画のすぐ下はまっすぐ（ギザギザが動画の下を隠す。2026-10-15 taiki「ここに関してはまっすぐにして」）。間に動画用の script があるので「+」ではなく「~」 */
 #ranking{position:relative;background:#10131A}
 #ranking::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px;pointer-events:none;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDEyIj48cGF0aCBkPSJNMCAxMkwxMi4wIDBMMjQgMTJaIiBmaWxsPSIjMTAxMzFBIi8+PC9zdmc+) 0 0/24px 12px repeat-x}
 .tp{background:#1C1219;background-image:none;color:#F3EEE9}
@@ -937,6 +963,22 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 .rc-ben__lead b{font-size:22px;color:var(--gold)}
 .rc-ben__lead small{letter-spacing:.2em;font-size:11px}
 .rc-qa__k{max-width:680px;margin:18px auto 10px;font-weight:700;font-size:15px}
+/* ご利用方法（TOP CLASS /service の作り。2026-10-15） */
+.svg{max-width:640px;margin:34px auto 0;display:grid;gap:14px}
+.svg__h{text-align:center;font-size:13px;letter-spacing:.1em;opacity:.85;margin-bottom:4px}
+.svg__h span{display:block;font-family:var(--en);font-size:28px;letter-spacing:.06em;opacity:1;margin-bottom:2px}
+.svs{border:1px solid rgba(128,128,128,.45);border-radius:var(--r)}
+.svs summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:14px 16px;min-height:48px}
+.svs summary::-webkit-details-marker{display:none}
+.svs__t{font-size:17px;font-weight:700;letter-spacing:.06em}
+.svs__no{font-family:var(--en);font-size:12px;letter-spacing:.12em;opacity:.75}
+.svs__arw{font-size:11px;transition:transform .2s;opacity:.8}
+.svs[open] .svs__arw{transform:rotate(180deg)}
+.svs__b{padding:0 16px 16px}
+.svs__lead{font-size:15px;font-weight:700;line-height:1.8;text-align:center;padding:10px 0 12px;border-bottom:1px solid rgba(128,128,128,.35)}
+.svs__notes{margin-top:10px;display:grid;gap:4px;font-size:13px;line-height:1.75}
+.svs__notes li{padding-left:1em;text-indent:-1em}
+.svs__notes li::before{content:"・"}
 /* ご利用方法の目次（料金ページと同じ形）・予約ページの「お送りいただく内容」（2026-10-15） */
 .pp__index{max-width:640px;margin:0 auto 10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
 .pp__index a{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid rgba(128,128,128,.4);font-size:14px;min-height:44px}
@@ -954,6 +996,21 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 #tlist .tcard__catch{margin:6px 0 4px}
 #tlist .tcard .sns{margin-top:4px}
 #tlist .tcard .sns a{height:28px}
+/* 出勤カレンダー（当月・翌月を左右にスライド。2026-10-15 taiki） */
+.scl__cal{padding:4px 10px 14px}
+.cal__hint{font-size:11px;opacity:.7;margin:2px 0 6px}
+.cal__wrap{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding-bottom:6px}
+.cal{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.cal__h{font-size:14px;font-weight:700;margin-bottom:6px}
+.cal__g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.cal__w{font-size:10px;opacity:.7;padding:2px 0}
+.cal__d{min-height:46px;border-radius:4px;background:rgba(128,128,128,.14);padding:3px 1px;line-height:1.2}
+.cal__d b{display:block;font-size:12px}
+.cal__d small{display:block;font-size:9px;letter-spacing:0;color:var(--gold);margin-top:2px}
+.cal__d--off small{color:inherit;opacity:.5}
+.cal__d--past{opacity:.3}
+.cal__d--pad{background:transparent}
+.cal__d--today{box-shadow:inset 0 0 0 1px var(--gold)}
 /* 出勤情報（TOP CLASS の /schedule と同じ1人ずつの並び） */
 .scl{max-width:360px;margin:0 auto;display:grid;gap:44px}
 .scl__item{text-align:center}

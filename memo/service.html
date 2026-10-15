@@ -600,6 +600,31 @@ body{font-weight:500;letter-spacing:.04em;line-height:1.7}
   .btn-ft--green{background:#06c755;border-color:#06c755}
 }
 
+/* ランキング：右側の文字を縦に詰めて、写真の高さに近づける（taiki） */
+.rrow{align-items:center}
+.rrow__body{display:grid;gap:3px;justify-items:center;align-content:center}
+.laurel{width:50px;height:44px;margin:0 auto 2px}
+.laurel svg{width:100%;height:100%}
+.rrow__en{font-size:14px;line-height:1.2;margin:0}
+.rrow__jp{font-size:11px;line-height:1.3;margin:0}
+.rrow__name{font-size:21px;line-height:1.25;margin:2px 0 0}
+.rrow__catch{font-size:11px;line-height:1.4;margin:0}
+.rrow__pt{font-size:16px;gap:6px;margin:2px 0 0}
+.rrow__pt small{font-size:11px}
+.coin{width:20px;height:20px;font-size:8px}
+.rrow .sns{margin-top:2px;gap:14px}
+.rrow .sns a{width:30px;height:30px}
+.rrow .sns__cap{margin-top:-2px}
+/* トップの在籍セラピスト：下の段とのすき間を詰める（taiki） */
+#therapist .tcards{row-gap:16px}
+#therapist .tcard__age{margin:0 0 4px}
+#therapist .tcard__catch{margin:6px 0 4px}
+#therapist .tcard .sns{margin-top:4px}
+/* 個人ページ：名前の下の英字を小さく、縦のすき間を詰める（taiki） */
+.tp__cls{margin-bottom:0}
+.tp__name{margin-top:6px;line-height:1.25}
+.tp__romaji{font-size:13px;line-height:1.3;margin:2px 0 10px;letter-spacing:.08em}
+
 /* ===== 黒ベース・ローズゴールド ===== */
 :root{--en:"Marcellus","Times New Roman",Georgia,serif;--serif:"Noto Sans JP","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif}
 body{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif;color:#F3EEE9;background-color:#0E0D0F;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciIHZpZXdCb3g9IjAgMCAyNDAgNDE1LjciPjxkZWZzPjxtYXNrIGlkPSJnYXAiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciPjxyZWN0IHdpZHRoPSIyNDAiIGhlaWdodD0iNDE1LjciIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIwLjAiIGN5PSIwLjAiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIwLjAiIGN5PSIyMDcuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjAuMCIgY3k9IjQxNS43IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSIwLjAiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxMjAuMCIgY3k9IjIwNy44IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSI0MTUuNyIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjI0MC4wIiBjeT0iMC4wIiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMjQwLjAiIGN5PSIyMDcuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjI0MC4wIiBjeT0iNDE1LjciIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI2MC4wIiBjeT0iMTAzLjkiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI2MC4wIiBjeT0iMzExLjgiIHI9IjE0LjAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxODAuMCIgY3k9IjEwMy45IiByPSIxNC4wIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMTgwLjAiIGN5PSIzMTEuOCIgcj0iMTQuMCIgZmlsbD0iIzAwMCIvPjwvbWFzaz48ZyBpZD0iZHIiPjxnIHRyYW5zZm9ybT0ic2NhbGUoMC4xNTQwOSkgdHJhbnNsYXRlKC0wLjAwIDIwLjIxKSI+PG1hc2sgaWQ9ImtqIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItNDAwMCIgeT0iLTQwMDAiIHdpZHRoPSI4MDAwIiBoZWlnaHQ9IjgwMDAiPjxyZWN0IHg9Ii00MDAwIiB5PSItNDAwMCIgd2lkdGg9IjgwMDAiIGhlaWdodD0iODAwMCIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0wIC00OC41OSBBNjEuOCA2MS44IDAgMCAwIC0yMy42MSAwIEEyMy42MSAyMy42MSAwIDAgMCAyMy42MSAwIEE2MS44IDYxLjggMCAwIDAgMCAtNDguNTkgWiBNMCAtNDguNTlMMCAtNzguNjIgTS0yMy42MSAwTC0zOC4yIDAgTTIzLjYxIDBMMzguMiAwIE0wIDIzLjYxTDAgMzguMiBNLTE2LjY5IDE2LjY5TC0yNy4wMSAyNy4wMSBNMTYuNjkgMTYuNjlMMjcuMDEgMjcuMDEgTS0xOC42MyAtMjQuMjlMLTMwLjE1IC0zOS4zMSBNMTguNjMgLTI0LjI5TDMwLjE1IC0zOS4zMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjcuNDYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvbWFzaz48cGF0aCBkPSJNMCAtNzguNjIgQTEwMCAxMDAgMCAwIDAgLTM4LjIgMCBBMzguMiAzOC4yIDAgMCAwIDM4LjIgMCBBMTAwIDEwMCAwIDAgMCAwIC03OC42MiBaIiBtYXNrPSJ1cmwoI2tqKSIvPjwvZz48L2c+PC9kZWZzPjxwYXRoIGQ9Ik0wLjAgMC4wTDI0MC4wIDAuME0wLjAgMjA3LjhMMjQwLjAgMjA3LjhNMC4wIDAuMEwyNDAuMCA0MTUuN00xMjAuMCAwLjBMMjQwLjAgMjA3LjhNMC4wIDIwNy44TDEyMC4wIDQxNS43TTI0MC4wIDAuMEwwLjAgNDE1LjdNMTIwLjAgMC4wTDAuMCAyMDcuOE0yNDAuMCAyMDcuOEwxMjAuMCA0MTUuNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTlDMkE2IiBzdHJva2Utb3BhY2l0eT0iMC4wNyIgc3Ryb2tlLXdpZHRoPSIwLjgiIG1hc2s9InVybCgjZ2FwKSIvPjxnIGZpbGw9IiNFOUMyQTYiIGZpbGwtb3BhY2l0eT0iMC4xNiI+PHVzZSBocmVmPSIjZHIiIHg9IjAuMCIgeT0iMC4wIi8+PHVzZSBocmVmPSIjZHIiIHg9IjAuMCIgeT0iMjA3LjgiLz48dXNlIGhyZWY9IiNkciIgeD0iMC4wIiB5PSI0MTUuNyIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxMjAuMCIgeT0iMC4wIi8+PHVzZSBocmVmPSIjZHIiIHg9IjEyMC4wIiB5PSIyMDcuOCIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxMjAuMCIgeT0iNDE1LjciLz48dXNlIGhyZWY9IiNkciIgeD0iMjQwLjAiIHk9IjAuMCIvPjx1c2UgaHJlZj0iI2RyIiB4PSIyNDAuMCIgeT0iMjA3LjgiLz48dXNlIGhyZWY9IiNkciIgeD0iMjQwLjAiIHk9IjQxNS43Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjYwLjAiIHk9IjEwMy45Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjYwLjAiIHk9IjMxMS44Ii8+PHVzZSBocmVmPSIjZHIiIHg9IjE4MC4wIiB5PSIxMDMuOSIvPjx1c2UgaHJlZj0iI2RyIiB4PSIxODAuMCIgeT0iMzExLjgiLz48L2c+PC9zdmc+),radial-gradient(60% 40% at 0% 0%,rgba(233,194,166,.10),transparent 70%),radial-gradient(50% 40% at 100% 100%,rgba(183,163,217,.08),transparent 70%);background-size:240px 415.7px,100% 100%,100% 100%;background-attachment:scroll,fixed,fixed}
@@ -635,6 +660,7 @@ a{color:inherit}
 .sec--dark{background:#1C1219;background-image:none;color:#F3EEE9}
 #therapist{position:relative;background:#1C1219}
 #therapist::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px;pointer-events:none;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDEyIj48cGF0aCBkPSJNMCAxMkwxMi4wIDBMMjQgMTJaIiBmaWxsPSIjMUMxMjE5Ii8+PC9zdmc+) 0 0/24px 12px repeat-x}
+.video ~ #therapist::before{content:none}   /* 動画のすぐ下はまっすぐ（ギザギザが動画の下を隠す。2026-10-15 taiki「ここに関してはまっすぐにして」）。間に動画用の script があるので「+」ではなく「~」 */
 #ranking{position:relative;background:#10131A}
 #ranking::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px;pointer-events:none;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDEyIj48cGF0aCBkPSJNMCAxMkwxMi4wIDBMMjQgMTJaIiBmaWxsPSIjMTAxMzFBIi8+PC9zdmc+) 0 0/24px 12px repeat-x}
 .tp{background:#1C1219;background-image:none;color:#F3EEE9}
@@ -937,6 +963,22 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 .rc-ben__lead b{font-size:22px;color:var(--gold)}
 .rc-ben__lead small{letter-spacing:.2em;font-size:11px}
 .rc-qa__k{max-width:680px;margin:18px auto 10px;font-weight:700;font-size:15px}
+/* ご利用方法（TOP CLASS /service の作り。2026-10-15） */
+.svg{max-width:640px;margin:34px auto 0;display:grid;gap:14px}
+.svg__h{text-align:center;font-size:13px;letter-spacing:.1em;opacity:.85;margin-bottom:4px}
+.svg__h span{display:block;font-family:var(--en);font-size:28px;letter-spacing:.06em;opacity:1;margin-bottom:2px}
+.svs{border:1px solid rgba(128,128,128,.45);border-radius:var(--r)}
+.svs summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:14px 16px;min-height:48px}
+.svs summary::-webkit-details-marker{display:none}
+.svs__t{font-size:17px;font-weight:700;letter-spacing:.06em}
+.svs__no{font-family:var(--en);font-size:12px;letter-spacing:.12em;opacity:.75}
+.svs__arw{font-size:11px;transition:transform .2s;opacity:.8}
+.svs[open] .svs__arw{transform:rotate(180deg)}
+.svs__b{padding:0 16px 16px}
+.svs__lead{font-size:15px;font-weight:700;line-height:1.8;text-align:center;padding:10px 0 12px;border-bottom:1px solid rgba(128,128,128,.35)}
+.svs__notes{margin-top:10px;display:grid;gap:4px;font-size:13px;line-height:1.75}
+.svs__notes li{padding-left:1em;text-indent:-1em}
+.svs__notes li::before{content:"・"}
 /* ご利用方法の目次（料金ページと同じ形）・予約ページの「お送りいただく内容」（2026-10-15） */
 .pp__index{max-width:640px;margin:0 auto 10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
 .pp__index a{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid rgba(128,128,128,.4);font-size:14px;min-height:44px}
@@ -954,6 +996,21 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 #tlist .tcard__catch{margin:6px 0 4px}
 #tlist .tcard .sns{margin-top:4px}
 #tlist .tcard .sns a{height:28px}
+/* 出勤カレンダー（当月・翌月を左右にスライド。2026-10-15 taiki） */
+.scl__cal{padding:4px 10px 14px}
+.cal__hint{font-size:11px;opacity:.7;margin:2px 0 6px}
+.cal__wrap{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding-bottom:6px}
+.cal{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.cal__h{font-size:14px;font-weight:700;margin-bottom:6px}
+.cal__g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.cal__w{font-size:10px;opacity:.7;padding:2px 0}
+.cal__d{min-height:46px;border-radius:4px;background:rgba(128,128,128,.14);padding:3px 1px;line-height:1.2}
+.cal__d b{display:block;font-size:12px}
+.cal__d small{display:block;font-size:9px;letter-spacing:0;color:var(--gold);margin-top:2px}
+.cal__d--off small{color:inherit;opacity:.5}
+.cal__d--past{opacity:.3}
+.cal__d--pad{background:transparent}
+.cal__d--today{box-shadow:inset 0 0 0 1px var(--gold)}
 /* 出勤情報（TOP CLASS の /schedule と同じ1人ずつの並び） */
 .scl{max-width:360px;margin:0 auto;display:grid;gap:44px}
 .scl__item{text-align:center}
@@ -997,7 +1054,7 @@ body .pvt{color:#F3EEE9;border-color:rgba(233,194,166,.38)}
 </header>
 
 <main>
-<section class="sec sec--light"><p class="crumb"><a href="top.html">トップページ</a> &gt; ご利用方法</p><div class="sec__head"><h2 class="sec__en">Service</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">ご利用方法</p></div><ul class="pp__index"><li><a href="#sv0">ご予約の手順 <span>&#8964;</span></a></li><li><a href="#sv1">ご予約当日 <span>&#8964;</span></a></li><li><a href="#sv2">施術開始まで <span>&#8964;</span></a></li><li><a href="#sv3">施術開始後 <span>&#8964;</span></a></li></ul><p class="h3" id="sv0">ご予約の手順</p><div class="steps"><div class="step"><span class="step__no">01</span><div><h3>セラピストを選ぶ</h3><p>在籍セラピストのページで、写真・プロフィール・料金を見てお選びください。当店は全セラピスト指名料無料です。写メ日記や各種SNSもご覧になるのがおすすめです。セラピスト選びにお困りの際は、ご遠慮なくお店までご相談ください。お好みをお伺いのうえ、おすすめのセラピストをご提案いたします。</p></div></div><div class="step"><span class="step__no">02</span><div><h3>ご予約のお問い合わせ</h3><p>【公式LINE・WEB予約・SNS・メール】いずれかよりお問い合わせください。① お名前 ② ご利用日時 ③ 指名セラピスト ④ ご利用コース ⑤ 待ち合わせ方法 ⑥ 詳しい場所 ⑦ ご連絡先 ⑧ お支払い方法 をお送りいただくとスムーズです。ご利用希望時間の2時間以上前のご予約をお願いいたします。すぐのご案内も可能ですが、セラピストは自宅などから向かうため、ご利用場所によりお時間をいただく場合がございます。</p></div></div><div class="step"><span class="step__no">03</span><div><h3>ご予約内容の確認</h3><p>お問い合わせの送信だけではご予約確定となりません。セラピストの確認が取れ次第「予約確認のお知らせ」をお送りします。内容をご確認いただき、ご返信くださいませ。ご返信の確認が取れましたら「予約完了のお知らせ」をお送りし、ご予約確定となります。</p></div></div></div><p class="h3" id="sv1">ご予約当日</p><div class="steps"><div class="step"><span class="step__no">04</span><div><h3>セラピストと合流</h3><p>ご要望の場所にてお待ちください。セラピストよりお声がけいたします。合流の時点からお時間スタートとなります。ホテルで合流する場合は、開始時間の10分前までにお部屋番号をご連絡ください。</p></div></div><div class="step"><span class="step__no">05</span><div><h3>ホテル入室</h3><p>外でお待ち合わせの場合は、お部屋までエスコートいたします。ご利用のホテルはその場でお決めいただけます。ご利用になりたいホテルがお決まりの場合は事前にお知らせください。ご予算に応じて最適なホテルもご提案いたします（ホテル選びのお時間もコース時間に含まれます）。</p></div></div></div><p class="h3" id="sv2">施術開始までのご準備</p><div class="steps"><div class="step"><span class="step__no">06</span><div><h3>カウンセリング</h3><p>ご要望やご質問をお伺いします。お疲れの箇所やお悩みがあれば、遠慮なくお伝えください。カウンセリングシートを用いてお伺いし、NG項目もここでお知らせいただけます。カウンセリング終了後にお会計となります。</p></div></div><div class="step"><span class="step__no">07</span><div><h3>シャワー＆洗体</h3><p>セラピストによる泡の洗体をお楽しみいただけます。別々のご入浴も可能です。お風呂の準備はセラピストがいたします。衛生面の観点から、施術前には必ずご入浴ください。貴重品の管理はご自身でお願いいたします。</p></div></div></div><p class="h3" id="sv3">施術開始</p><div class="steps"><div class="step"><span class="step__no">08</span><div><h3>ドライ＆オイルマッサージ</h3><p>たっぷりのオイルで全身をマッサージしながら、少しずつ体と心をほぐしていきます。マッサージの時間を重点的に配分することも可能です。口に含んでも問題のないオイルを使用しております。</p></div></div><div class="step"><span class="step__no">09</span><div><h3>性感マッサージ</h3><p>はがゆいほどの焦らしから始まり、全身を溶かすような愛撫へ。日常では味わえない時間へご案内する、当店のメインとなる施術です。セラピストによって特徴や得意なことが異なります。</p></div></div><div class="step"><span class="step__no">10</span><div><h3>リフレッシュタイム</h3><p>余韻が落ち着くまでクールダウン。シャワーを浴びたのち、お時間までゆっくりとお過ごしください。「もう少し一緒に過ごしたい」「このあと食事に行きたい」など、延長も可能です。お気軽にセラピストまでお声がけください。</p></div></div><div class="step"><span class="step__no">11</span><div><h3>退室＆お見送り</h3><p>最後までご満足いただけますよう、ご指定の場所までお見送りいたします。お帰りの前に次回のご予約をいただくことも可能です。駅までのお見送りなどをご希望の場合は、余裕をもってのご退室をお願いいたします。</p></div></div></div><p class="note">このページの文面は参考店の流れを写した仮のものです（受付の時間や手順は開業までに当店の内容へ差し替えます）。</p><div class="cta"><a class="btn-o btn-o--fill" href="booking.html">ご予約はこちら</a><a class="btn-o" href="price.html">料金を見る</a><a class="btn-o" href="safety.html">安全とプライバシーについて</a><a class="btn-o" href="faq.html">よくある質問</a></div></section>
+<section class="sec sec--light"><p class="crumb"><a href="top.html">トップページ</a> &gt; ご利用方法</p><div class="sec__head"><h2 class="sec__en">Services</h2><div class="sec__rule" aria-hidden="true"><i></i><b></b><i></i></div><p class="sec__jp">ご利用方法</p></div><p class="h3" style="text-align:center">目次のご案内</p><ul class="pp__index"><li><a href="#sv0">ご予約の手順 <span>&#8964;</span></a></li><li><a href="#sv1">ご予約当日 <span>&#8964;</span></a></li><li><a href="#sv2">施術開始までのご準備 <span>&#8964;</span></a></li><li><a href="#sv3">施術開始 <span>&#8964;</span></a></li></ul><div class="svg" id="sv0"><p class="svg__h"><span>Reservation</span>— ご予約の手順 —</p><details class="svs" open><summary><span class="svs__t">セラピストを選ぶ</span><span class="svs__no">STEP 01</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">在籍セラピストのページで、写真・プロフィール・料金を見てお選びください<br>当店は全セラピスト指名料無料です</p><ul class="svs__notes"><li>写メ日記や各種SNSをご覧になるのがおすすめです</li><li>セラピスト選びにお困りの際は、ご遠慮なくお店までご相談ください</li><li>お客様の好みをお伺いのうえ、おすすめのセラピストをご提案いたします</li></ul></div></details><details class="svs" open><summary><span class="svs__t">ご予約のお問い合わせ</span><span class="svs__no">STEP 02</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">【WEB予約・LINE】<br>いずれかよりお問い合わせください<br>① お名前　② ご利用日時　③ 指名セラピスト　④ ご利用コース<br>⑤ 待ち合わせ方法　⑥ 詳しい場所　⑦ ご連絡先　⑧ お支払い方法</p><ul class="svs__notes"><li>ご予約時には、上記の内容をお送りいただくとスムーズです</li><li>ご利用希望時間の【2時間以上前】のご予約をお願いいたします</li><li>すぐのご案内も可能ですが、セラピストは自宅などから派遣先へ向かうため、ご利用場所によりお時間をいただく場合がございます</li></ul></div></details><details class="svs" open><summary><span class="svs__t">ご予約内容の確認</span><span class="svs__no">STEP 03</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">お問い合わせの送信だけではご予約確定となりません<br>お送りする「予約確認のお知らせ」をご確認いただき、ご返信くださいませ</p><ul class="svs__notes"><li>セラピストの確認が出来次第「予約確認のお知らせ」をお送りいたします</li><li>あらためて内容をご確認いただき、ご返信くださいませ</li><li>ご返信の確認が取れましたら「予約完了のお知らせ」をお送りいたします</li><li>上記の流れをもって、ご予約確定となります</li></ul></div></details></div><div class="svg" id="sv1"><p class="svg__h"><span>Appointment</span>— ご予約当日 —</p><details class="svs" open><summary><span class="svs__t">セラピストと合流</span><span class="svs__no">STEP 04</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">ご要望の場所にてお待ちください<br>セラピストよりお声がけいたします<br>【合流の時点から】お時間スタートとなります</p><ul class="svs__notes"><li>ホテル合流の場合、開始時間の10分前までにお部屋番号をご連絡ください</li><li>最初の出逢いが自然なものとなりますよう心がけております</li></ul></div></details><details class="svs" open><summary><span class="svs__t">ホテル入室</span><span class="svs__no">STEP 05</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">外でお待ち合わせの場合、お部屋までエスコートいたしますので、セラピストにお任せください<br>ご利用のホテルはその場でお決めいただけます</p><ul class="svs__notes"><li>ご利用になりたいホテルがお決まりの場合は、事前にお知らせください</li><li>お客様のご予算に応じて、最適なホテルをご提案いたします</li><li>ホテル選びのお時間もコース時間に含まれておりますので、ご了承くださいませ</li></ul></div></details></div><div class="svg" id="sv2"><p class="svg__h"><span>Preparation</span>— 施術開始までのご準備 —</p><details class="svs" open><summary><span class="svs__t">カウンセリング</span><span class="svs__no">STEP 06</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">お客様のご要望やご質問をお伺いします<br>お疲れの箇所やお悩み等ございましたら、遠慮なくお伝えください<br>カウンセリング終了後にお会計となります</p><ul class="svs__notes"><li>カウンセリングシートを用いたヒアリングをいたします</li><li>NG項目は遠慮なくご記入ください</li><li>伝えておきたいことや人には言えないお悩みがあれば、無理のない程度にお聞かせいただけますと幸いです</li><li>事前カウンセリングのご用意もございます</li></ul></div></details><details class="svs" open><summary><span class="svs__t">シャワー＆洗体</span><span class="svs__no">STEP 07</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">セラピストによる泡々密着洗体をお楽しみいただけます<br>お客様と個別でのご入浴でも可能です</p><ul class="svs__notes"><li>お風呂の準備はセラピストがいたします</li><li>衛生面の観点から、施術前には必ずご入浴ください</li><li>ご自宅利用の場合、シャワーや洗面所をお借りいたしますことをご了承ください</li><li>貴重品の管理はご自身にてお願いいたします</li></ul></div></details></div><div class="svg" id="sv3"><p class="svg__h"><span>Treatment</span>— 施術開始 —</p><details class="svs" open><summary><span class="svs__t">ドライ＆オイルマッサージ</span><span class="svs__no">STEP 08</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">たっぷりのオイルで全身をマッサージしながら、少しずつ体と心をほぐしていきます<br>プロのエステティシャンによる厳しい指導を受けた本格的なマッサージをご堪能ください</p><ul class="svs__notes"><li>マッサージの時間を重点的に配分することも可能です</li><li>口に含んでも問題のないオイルを使用しております</li></ul></div></details><details class="svs" open><summary><span class="svs__t">性感マッサージ</span><span class="svs__no">STEP 09</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">はがゆいほどの焦らしからはじまり、全身を溶かすような愛撫<br>日常では味わえない、究極のオーガズムへと導く当店のメインとなる施術</p><ul class="svs__notes"><li>セラピストによって特徴や得意プレイが異なります</li><li>要望がない限り、性感マッサージに最も比重をおいた時間配分で施術いたします</li><li>時間内であれば何度でもオーガズムに導きます</li></ul></div></details><details class="svs" open><summary><span class="svs__t">リフレッシュタイム</span><span class="svs__no">STEP 10</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">快感の波が徐々に弱まるまでクールダウン<br>シャワーを浴びたのち、お時間までゆっくりとお過ごしください</p><ul class="svs__notes"><li>「もう少し一緒に過ごしたい」「この後も一緒に食事に行きたい」など、サービスをご延長いただくことも可能です</li><li>お気軽にセラピストまでお声がけください</li></ul></div></details><details class="svs" open><summary><span class="svs__t">退室＆お見送り</span><span class="svs__no">STEP 11</span><span class="svs__arw" aria-hidden="true">▼</span></summary><div class="svs__b"><p class="svs__lead">最後の最後までご満足いただけますよう、優しいエスコートと共にお客様をご指定の場所までお見送りいたします</p><ul class="svs__notes"><li>お帰りになる前に次回のご予約をいただくことも可能です</li><li>駅までのお見送り等をご希望の場合は、余裕をもってのご退室をお願いいたします</li></ul></div></details></div><div class="cta"><a class="btn-o btn-o--fill" href="booking.html">ご予約はこちら</a><a class="btn-o" href="price.html">料金を見る</a></div></section>
 </main>
 
 <footer class="ft" id="schedule">
