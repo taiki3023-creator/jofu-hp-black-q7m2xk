@@ -1044,7 +1044,7 @@ body .pvt{color:#2B2326;border-color:rgba(150,94,72,.34)}
       <a class="btn-line" href="reserve.html">LINE予約</a>
       <a class="btn-line" href="reserve.html#form">WEB予約</a>
     </div>
-    <div class="hd__hours"><span>営業時間 <b>24時間営業</b></span><span>当日受付 10:00 - 翌04:00</span></div>
+    <div class="hd__hours"><span>営業時間 <b>10:00 - 22:00</b></span><span>当日受付 10:00 - 22:00</span></div>
     <a class="hd__book" href="booking.html">ご予約はこちら</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
     <label for="menu-toggle" class="burger" aria-hidden="true"><i></i><i></i><i></i></label>
@@ -1076,7 +1076,7 @@ body .pvt{color:#2B2326;border-color:rgba(150,94,72,.34)}
 <div class="wstep"><div class="wform">
   <!-- 項目は本家（TOP CLASS東京 /reservation）の13項目と同じ並び（2026-10-12 taiki「階層全てパクって」）。本名は伺わない方針のまま -->
   <label for="nick">お呼びする名前 <span class="req">必須</span></label><input id="nick" type="text" placeholder="ニックネームで構いません" autocomplete="nickname">
-  <label for="mail">メールアドレス <span class="opt">任意</span></label><input id="mail" type="email" placeholder="控えのメールが要る方だけ" autocomplete="email">
+  <label for="mail">メールアドレス <span class="req">必須</span></label><input id="mail" type="email" required placeholder="ご返信を受け取るメールアドレス" autocomplete="email">
   <label for="tel">お電話番号 <span class="opt">任意</span></label><input id="tel" type="tel" inputmode="numeric" placeholder="09012345678" autocomplete="tel">
   <label for="cast">セラピスト <span class="req">必須</span></label><select id="cast"><option value="">おまかせ（店が提案します）</option><option value="ritsu">律（新人）</option><option value="ren">蓮（ゴールド）</option><option value="minato">湊（ゴールド）</option><option value="yuto">悠斗（シルバー）</option><option value="hayate">颯（シルバー）</option><option value="himegami">姫神リョウ（レジェンド）</option></select>
   <label for="date">ご利用日 <span class="req">必須</span></label><input id="date" type="date">
@@ -1087,13 +1087,13 @@ body .pvt{color:#2B2326;border-color:rgba(150,94,72,.34)}
   <label for="area">待ち合わせ場所 <span class="req">必須</span></label><textarea id="area" placeholder="例：新宿駅 東口／〇〇ホテル（ご自宅の場合は最寄り駅まで）"></textarea>
   <label for="memo">備考欄 <span class="opt">任意</span></label><textarea id="memo" placeholder="初めてです／触られたくない所があります など"></textarea>
   <label class="wagree"><input id="agree" type="checkbox"> <a href="terms.html" target="_blank" rel="noopener">ご利用規約</a>に同意する</label>
-  <p class="wnote">本名は伺いません。空きと総額（交通費込み）をお返ししてから確定します。前払いはありません。</p>
+  <p class="wnote">本名は伺いません。空きと総額（交通費込み）をメールでお返ししてから確定します。前払いはありません。</p>
   <button class="btn-o btn-o--fill" id="b3" type="button">この内容で送る</button>
 </div></div>
 <script>
 (function(){var q=new URLSearchParams(location.search).get('cast');var sel=document.getElementById('cast');if(q&&sel){sel.value=q}
 function go(n){[].slice.call(document.querySelectorAll('.wstep')).forEach(function(s,i){s.hidden=(i!==n)});document.querySelectorAll('.wdot').forEach(function(d,i){d.classList.toggle('wdot--on',i<=n)});var top=document.querySelector('.wsteps');if(top){var y=top.getBoundingClientRect().top+window.pageYOffset-90;window.scrollTo(0,y)}}
-document.getElementById('b3').onclick=function(){var need=[['nick','お呼びする名前'],['date','ご利用日'],['area','待ち合わせ場所']];for(var i=0;i<need.length;i++){if(!document.getElementById(need[i][0]).value.trim()){alert(need[i][1]+'を入力してください');return}}if(!document.getElementById('agree').checked){alert('ご利用規約への同意が必要です');return}location.href='reserve_done.html'};
+document.getElementById('b3').onclick=function(){var need=[['nick','お呼びする名前'],['mail','メールアドレス'],['date','ご利用日'],['area','待ち合わせ場所']];for(var i=0;i<need.length;i++){if(!document.getElementById(need[i][0]).value.trim()){alert(need[i][1]+'を入力してください');return}}if(!document.getElementById('agree').checked){alert('ご利用規約への同意が必要です');return}location.href='reserve_done.html'};
 })();
 </script><p class="note">この画面は試作です。今は送信しても実際には届きません。</p></section>
 </main>
@@ -1102,7 +1102,7 @@ document.getElementById('b3').onclick=function(){var need=[['nick','お呼びす
   <div class="ft__in">
     <div class="logo-jw"><img src="img/logo_rose_deep.png" alt="JEWEL TOKYO" width="1000" height="364" loading="lazy"></div>
     <p class="ft__title">女性用風俗《JEWEL 東京本店》</p>
-    <p class="ft__hours">24時間営業（受付：10時-翌4時）</p>
+    <p class="ft__hours">受付時間 10:00-22:00</p>
     <div class="ft__btns">
       <a class="btn-ft btn-ft--green" href="reserve.html"><svg viewBox="0 0 24 24" aria-label="LINE"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill="#000">LINE</text></svg> LINE予約</a>
       <a class="btn-ft" href="reserve.html#form"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8" stroke="currentColor" stroke-width="2"/></svg> WEB予約</a>
